@@ -5,7 +5,7 @@ using UnityEngine;
 public class CarController : MonoBehaviour
 {
 
-    public float speed = 20.0f;
+    public float speed = 5.0f;
     public float turnSpeed = 20.0f;
     public float horizontalInput;
     public float forwardInput;
@@ -13,6 +13,9 @@ public class CarController : MonoBehaviour
     public Transform steeringWheel;
     public float steeringLimitAngle = 100f;
     public float steeringRotationSpeed = 60f;
+    public bool isMoving = false;
+
+
 
     private Rigidbody carRb;
 
@@ -20,6 +23,8 @@ public class CarController : MonoBehaviour
     void Start()
     {
         carRb = GetComponent<Rigidbody>();
+        carRb.drag = 2f; // You can adjust this value
+        carRb.angularDrag = 2f;
     }
 
     // Update is called once per frame
@@ -30,11 +35,25 @@ public class CarController : MonoBehaviour
 
         UpdateSteerWheel(horizontalInput);
 
-        if(forwardInput != 0f)
+        if(Input.GetKeyDown(KeyCode.Space))
         {
+            isMoving = !isMoving;
+
+
             // Move the vehicle forward based on vertical input
             //carRb.AddForce(transform.forward * Time.deltaTime * speed * forwardInput, ForceMode.Impulse);
-            transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput);
+            
+            //transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput);
+        }
+
+        if(isMoving)
+        {
+            //transform.Translate(Vector3.forward * Time.deltaTime * speed);
+            carRb.velocity = transform.forward * speed;
+        }
+        else
+        {
+            carRb.velocity = Vector3.zero;
         }
         transform.Rotate(Vector3.up, turnSpeed * horizontalInput * Time.deltaTime);
 
