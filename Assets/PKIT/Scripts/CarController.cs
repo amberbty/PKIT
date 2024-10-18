@@ -10,10 +10,13 @@ public class CarController : MonoBehaviour
     public float horizontalInput;
     public float forwardInput;
 
+    public bool isMoving = false;
+
     public Transform steeringWheel;
     public float steeringLimitAngle = 100f;
     public float steeringRotationSpeed = 60f;
-    public bool isMoving = false;
+    public float returnSpeed = 2f;
+
 
 
 
@@ -65,11 +68,23 @@ public class CarController : MonoBehaviour
         {
             steeringWheel.Rotate(Vector3.forward, -horizontalInput * steeringRotationSpeed * Time.deltaTime);
         }
-        if (horizontalInput == 0f && steeringWheel.localEulerAngles.z > 5f)
+        else if (horizontalInput == 0f && steeringWheel.localEulerAngles.z > 5f)
         {
+            // Smoothly return the steering wheel to the original position when no input
+            float currentZ = steeringWheel.localEulerAngles.z;
+            // Ensure the angle is between 0-360 degrees (as Euler angles can wrap)
+            if (currentZ > 180f)
+                currentZ -= 360f;
+            // Gradually return to 0 using Lerp, for smooth transition
+            float smoothRotation = Mathf.Lerp(currentZ, 0f, Time.deltaTime * returnSpeed);
             steeringWheel.localEulerAngles = new Vector3(steeringWheel.localEulerAngles.x,
-                                                        steeringWheel.localEulerAngles.y,
-                                                        0f);
+                                                         steeringWheel.localEulerAngles.y,
+                                                         smoothRotation);
+
+
+            //steeringWheel.localEulerAngles = new Vector3(steeringWheel.localEulerAngles.x,
+            //                                            steeringWheel.localEulerAngles.y,
+            //                                            0f);
         }
     }
 }
