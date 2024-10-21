@@ -62,7 +62,7 @@ public class CarController : MonoBehaviour
 
     }
 
-    public void UpdateSteerWheel(float horizontalInput)
+    private void UpdateSteerWheel(float horizontalInput)
     {
         if (horizontalInput != 0f)
         {
