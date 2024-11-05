@@ -38,7 +38,7 @@ public class CarController : MonoBehaviour
 
         UpdateSteerWheel(horizontalInput);
 
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetKeyDown(KeyCode.Space))   
         {
             isMoving = !isMoving;
 
