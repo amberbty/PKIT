@@ -19457,6 +19457,7 @@ GameObject:
   - component: {fileID: 1984958538}
   - component: {fileID: 1984958537}
   - component: {fileID: 1984958539}
+  - component: {fileID: 1984958544}
   m_Layer: 6
   m_Name: SteeringWheel
   m_TagString: Untagged
@@ -19510,7 +19511,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 62
   m_CollisionDetection: 0
 --- !u!114 &1984958538
 MonoBehaviour:
@@ -19527,8 +19528,8 @@ MonoBehaviour:
   _transferOnSecondSelection: 1
   _addNewPointsToFront: 0
   _forwardElement: {fileID: 0}
-  _oneGrabTransformer: {fileID: 0}
-  _twoGrabTransformer: {fileID: 0}
+  _oneGrabTransformer: {fileID: 1984958544}
+  _twoGrabTransformer: {fileID: 1984958544}
   _targetTransform: {fileID: 0}
   _maxGrabPoints: -1
   _rigidbody: {fileID: 0}
@@ -19645,6 +19646,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1984958535}
   m_Mesh: {fileID: 4300014, guid: 14d293759c190f4429a695703756ced6, type: 3}
+--- !u!114 &1984958544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1984958535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 124f4583f657475469a45ab6fca8f921, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pivotTransform: {fileID: 0}
+  _rotationAxis: 2
+  _constraints:
+    MinAngle:
+      Constrain: 0
+      Value: 0
+    MaxAngle:
+      Constrain: 0
+      Value: 0
 --- !u!1001 &1985930795
 PrefabInstance:
   m_ObjectHideFlags: 0
