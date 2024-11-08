@@ -917,7 +917,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1.8789729, y: 0.50676197, z: 2.57053}
   m_Center: {x: -0.00929867, y: 0.24660683, z: -0.7852571}
@@ -938,7 +938,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1.8886979, y: 1.1019361, z: 1.4589839}
   m_Center: {x: -0.0045541516, y: 0.5472362, z: 1.4331388}
@@ -8487,7 +8487,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &890062735
 Transform:
   m_ObjectHideFlags: 0
@@ -8500,10 +8500,7 @@ Transform:
   m_LocalPosition: {x: 0.27829197, y: 1.0543875, z: 0.5251171}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1132580517}
-  - {fileID: 1984958536}
-  - {fileID: 1518633623}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &890062736
@@ -8519,8 +8516,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  turnSpeed: 5
   isMoving: 0
-  steeringWheel: {fileID: 1984958545}
+  virtualSteeringWheel: {fileID: 0}
 --- !u!1001 &908391481
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10240,7 +10238,7 @@ MonoBehaviour:
   requestScenePermissionOnStartup: 1
   requestRecordAudioPermissionOnStartup: 0
   _localDimming: 1
-  _trackingOriginType: 0
+  _trackingOriginType: 1
   usePositionTracking: 1
   useRotationTracking: 1
   useIPDInPositionTracking: 1
@@ -10275,14 +10273,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1132580513}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.6087614, z: -0, w: 0.79335344}
-  m_LocalPosition: {x: -0.324292, y: 0.26661253, z: -0.05511707}
+  m_LocalRotation: {x: -0, y: -0.008438259, z: -0, w: 0.9999645}
+  m_LocalPosition: {x: -0.46712753, y: 0.111, z: 0.06933904}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1942635029}
   - {fileID: 1642868885}
-  m_Father: {fileID: 890062735}
+  m_Father: {fileID: 1518633623}
   m_LocalEulerAnglesHint: {x: 0, y: 75, z: 0}
 --- !u!1 &1140127858
 GameObject:
@@ -13589,7 +13587,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 890062735}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1003017891619160, guid: c9643380c3b12e3428f59ad8efafcab9, type: 3}
       propertyPath: m_Layer
@@ -13913,19 +13911,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4044351658239648, guid: c9643380c3b12e3428f59ad8efafcab9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.27829197
+      value: 0.06785645
       objectReference: {fileID: 0}
     - target: {fileID: 4044351658239648, guid: c9643380c3b12e3428f59ad8efafcab9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.0543875
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4044351658239648, guid: c9643380c3b12e3428f59ad8efafcab9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.5251171
+      value: 0.012883544
       objectReference: {fileID: 0}
     - target: {fileID: 4044351658239648, guid: c9643380c3b12e3428f59ad8efafcab9, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7881883
+      value: 0.8357467
       objectReference: {fileID: 0}
     - target: {fileID: 4044351658239648, guid: c9643380c3b12e3428f59ad8efafcab9, type: 3}
       propertyPath: m_LocalRotation.x
@@ -13933,7 +13931,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4044351658239648, guid: c9643380c3b12e3428f59ad8efafcab9, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.6154342
+      value: 0.54911524
       objectReference: {fileID: 0}
     - target: {fileID: 4044351658239648, guid: c9643380c3b12e3428f59ad8efafcab9, type: 3}
       propertyPath: m_LocalRotation.z
@@ -13945,7 +13943,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4044351658239648, guid: c9643380c3b12e3428f59ad8efafcab9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 75.967
+      value: 66.613
       objectReference: {fileID: 0}
     - target: {fileID: 4044351658239648, guid: c9643380c3b12e3428f59ad8efafcab9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -14015,7 +14013,7 @@ PrefabInstance:
     - target: {fileID: 64556488749894442, guid: c9643380c3b12e3428f59ad8efafcab9,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 64556488749894442, guid: c9643380c3b12e3428f59ad8efafcab9,
         type: 3}
@@ -14058,6 +14056,14 @@ PrefabInstance:
     - {fileID: 114744120490126374, guid: c9643380c3b12e3428f59ad8efafcab9, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 4044351658239648, guid: c9643380c3b12e3428f59ad8efafcab9,
+        type: 3}
+      insertIndex: 0
+      addedObject: {fileID: 1132580517}
+    - targetCorrespondingSourceObject: {fileID: 4044351658239648, guid: c9643380c3b12e3428f59ad8efafcab9,
+        type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 1984958536}
     - targetCorrespondingSourceObject: {fileID: 4044351658239648, guid: c9643380c3b12e3428f59ad8efafcab9,
         type: 3}
       insertIndex: -1
@@ -14137,8 +14143,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  turnSpeed: 5
   isMoving: 0
-  steeringWheel: {fileID: 1984958545}
+  virtualSteeringWheel: {fileID: 1984958546}
 --- !u!1 &1535699760 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: be04acb3356f2cb4b9dfd60d8dcb935e,
@@ -17132,6 +17139,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce731b88b088b554d9016f725319a721, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  steeringRotationSpeed: 60
+  returnSpeed: 2
+  steeringLimitAngle: 100
+  leftHandTracking: {fileID: 0}
+  rightHandTracking: {fileID: 0}
 --- !u!114 &1832750948
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19463,11 +19475,11 @@ GameObject:
   - component: {fileID: 1984958543}
   - component: {fileID: 1984958542}
   - component: {fileID: 1984958541}
-  - component: {fileID: 1984958540}
   - component: {fileID: 1984958538}
   - component: {fileID: 1984958537}
   - component: {fileID: 1984958539}
   - component: {fileID: 1984958544}
+  - component: {fileID: 1984958546}
   - component: {fileID: 1984958545}
   m_Layer: 6
   m_Name: SteeringWheel
@@ -19484,8 +19496,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1984958535}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.17597911, y: 0.59989864, z: -0.1374088, w: 0.7682916}
-  m_LocalPosition: {x: -0.032678872, y: 0.017463803, z: -0.008167803}
+  m_LocalRotation: {x: 0.22327071, y: 0.000000119209275, z: -0.00000043213362, w: 0.9747565}
+  m_LocalPosition: {x: -0.44196492, y: 1.0718513, z: 0.36363363}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -19495,7 +19507,7 @@ Transform:
   - {fileID: 221872485}
   - {fileID: 737074428}
   - {fileID: 1845840306}
-  m_Father: {fileID: 890062735}
+  m_Father: {fileID: 1518633623}
   m_LocalEulerAnglesHint: {x: 25.802, y: 0, z: 0}
 --- !u!54 &1984958537
 Rigidbody:
@@ -19540,7 +19552,7 @@ MonoBehaviour:
   _addNewPointsToFront: 0
   _forwardElement: {fileID: 0}
   _oneGrabTransformer: {fileID: 1984958544}
-  _twoGrabTransformer: {fileID: 1984958544}
+  _twoGrabTransformer: {fileID: 1984958545}
   _targetTransform: {fileID: 0}
   _maxGrabPoints: -1
   _rigidbody: {fileID: 0}
@@ -19568,18 +19580,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300014, guid: 14d293759c190f4429a695703756ced6, type: 3}
---- !u!114 &1984958540
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1984958535}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce731b88b088b554d9016f725319a721, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!205 &1984958541
 LODGroup:
   m_ObjectHideFlags: 0
@@ -19687,11 +19687,32 @@ MonoBehaviour:
   m_GameObject: {fileID: 1984958535}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 337e8578918e4da478dbff20b285d8bb, type: 3}
+  m_Script: {fileID: 11500000, guid: 6b80644816ce922468d6e1dc8c12daff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pivotTransform: {fileID: 0}
+  _rotationAxis: 2
+  _constraints:
+    MinAngle:
+      Constrain: 0
+      Value: 0
+    MaxAngle:
+      Constrain: 0
+      Value: 0
+--- !u!114 &1984958546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1984958535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce731b88b088b554d9016f725319a721, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   steeringRotationSpeed: 60
-  returnSpeed: 20
+  returnSpeed: 2
   steeringLimitAngle: 100
   leftHandTracking: {fileID: 557872646}
   rightHandTracking: {fileID: 1049905445}
@@ -21555,4 +21576,5 @@ SceneRoots:
   - {fileID: 1103446329}
   - {fileID: 413448133}
   - {fileID: 1299841949}
+  - {fileID: 1518633621}
   - {fileID: 890062735}
