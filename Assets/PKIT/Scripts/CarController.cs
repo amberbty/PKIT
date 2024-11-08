@@ -8,7 +8,7 @@ public class CarController : MonoBehaviour
     public float turnSpeed = 5.0f; // Stable turn speed multiplier
     public bool isMoving = false;
 
-    public HandlesController handlesController;  // Reference to handlesController
+    public VirtualSteeringWheel virtualSteeringWheel;  // Reference to virtualSteeringWheel
 
     private Rigidbody carRb;
     private Quaternion initialRotation;
@@ -53,7 +53,7 @@ public class CarController : MonoBehaviour
     private void ApplySteering()
     {
         // Get the steering angle and rotation speed from WheelController
-        float steeringAngle = handlesController.GetSteeringAngle();
+        float steeringAngle = virtualSteeringWheel.GetSteeringAngle();
 
         // Scale the steering angle by steeringRotationSpeed to set the turning speed
         float turnAngle = steeringAngle * turnSpeed * Time.deltaTime;

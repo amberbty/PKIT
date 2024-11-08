@@ -8915,7 +8915,7 @@ MonoBehaviour:
     - {x: -0.17509617, y: -0.032436553, z: 0.6105982, w: -0.77166015}
     - {x: 0.07640178, y: -0.028313749, z: 0.38760024, w: -0.91821975}
     - {x: -0.011704286, y: 0.044428512, z: 0.53822744, w: -0.8415467}
-  _ghostProvider: {fileID: 0}
+  _ghostProvider: {fileID: 11400000, guid: ba24f6f783d84ef4f8ff075364e1283c, type: 2}
 --- !u!1001 &581705051
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20010,7 +20010,7 @@ MonoBehaviour:
     - {x: -0.17237887, y: 0.022083811, z: 0.41105995, w: -0.8948899}
     - {x: 0.07931519, y: -0.018654956, z: 0.4981021, w: -0.8632819}
     - {x: -0.008315616, y: 0.045185555, z: 0.47313467, w: -0.87979144}
-  _ghostProvider: {fileID: 0}
+  _ghostProvider: {fileID: 11400000, guid: ba24f6f783d84ef4f8ff075364e1283c, type: 2}
 --- !u!114 &1293201272 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9089885502908991042, guid: bf187b68367fbbc4680e2f3a3677e9a5,

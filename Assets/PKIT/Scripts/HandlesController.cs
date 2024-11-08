@@ -10,7 +10,7 @@ public class HandlesController : MonoBehaviour
     public float steeringLimitAngle = 100f;
 
     private float steeringAngle = 0f;
-    public bool isGrabbed { get; private set; }  // Public getter, private setter
+    public bool isGrabbed = false;
 
 
     public OVRHand leftHandTracking;
@@ -22,7 +22,7 @@ public class HandlesController : MonoBehaviour
     void Start()
     {
         initialRotation = transform.localRotation;
-        isGrabbed = false;  // Set `isGrabbed` to false only at the start
+        //isGrabbed = false;  // Set `isGrabbed` to false only at the start
     }
 
     void Update()
@@ -42,27 +42,29 @@ public class HandlesController : MonoBehaviour
 
     private void CheckHandGrabs()
     {
-        // Check if either hand is tracked and in a grabbing pose
-        if (leftHandTracking && leftHandTracking.IsTracked && leftHandTracking.GetFingerIsPinching(OVRHand.HandFinger.Index))
+        // Check if either hand is in a grabbing pose
+        isGrabbed = (leftHandTracking && leftHandTracking.IsTracked) || (rightHandTracking && rightHandTracking.IsTracked);
+
+        if (isGrabbed && initialHandRotation == Quaternion.identity)
         {
-            if (!isGrabbed)
-            {
-                isGrabbed = true;
-                initialHandRotation = leftHandTracking.transform.rotation;  // Set initial hand rotation on first grab
-            }
+            // Set the initial rotation to start rotation calculations when grabbing starts
+            initialHandRotation = leftHandTracking.IsTracked ? leftHandTracking.transform.rotation : rightHandTracking.transform.rotation;
         }
-        else if (rightHandTracking && rightHandTracking.IsTracked && rightHandTracking.GetFingerIsPinching(OVRHand.HandFinger.Index))
+
+        /*bool leftHandGrabbed = leftHandTracking && leftHandTracking.IsTracked && leftHandTracking.GetFingerIsPinching(OVRHand.HandFinger.Index);
+        bool rightHandGrabbed = rightHandTracking && rightHandTracking.IsTracked && rightHandTracking.GetFingerIsPinching(OVRHand.HandFinger.Index);
+
+        if ((leftHandGrabbed || rightHandGrabbed) && !isGrabbed)
         {
-            if (!isGrabbed)
-            {
-                isGrabbed = true;
-                initialHandRotation = rightHandTracking.transform.rotation;
-            }
+            isGrabbed = true;
+            initialHandRotation = leftHandGrabbed ? leftHandTracking.transform.rotation : rightHandTracking.transform.rotation;
         }
-        else
+        else if (!leftHandGrabbed && !rightHandGrabbed)
         {
-            isGrabbed = false;  // Set `isGrabbed` to false only when neither hand is grabbing
+            isGrabbed = false;
         }
+        */
+
 
         /*
         // Check if either hand is in a grabbing pose
