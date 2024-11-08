@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CarController : MonoBehaviour
+public class BikeCarController : MonoBehaviour
 {
     public float speed = 5.0f;
     public float turnSpeed = 5.0f; // Stable turn speed multiplier
@@ -23,7 +23,8 @@ public class CarController : MonoBehaviour
 
     void Update()
     {
-        if (OVRInput.GetDown(OVRInput.RawButton.A)) {
+        if (OVRInput.GetDown(OVRInput.RawButton.A))
+        {
             isMoving = !isMoving;
         }
 
@@ -31,7 +32,7 @@ public class CarController : MonoBehaviour
         if (isMoving)
         {
             MoveForward();
-            
+
         }
         else
         {
