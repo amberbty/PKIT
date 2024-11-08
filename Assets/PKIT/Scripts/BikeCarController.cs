@@ -23,7 +23,7 @@ public class BikeCarController : MonoBehaviour
 
     void Update()
     {
-        if (OVRInput.GetDown(OVRInput.RawButton.A))
+        if (OVRInput.GetDown(OVRInput.RawButton.A) && handlesController.isGrabbed)
         {
             isMoving = !isMoving;
         }
