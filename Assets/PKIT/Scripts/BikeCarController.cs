@@ -24,12 +24,9 @@ public class BikeCarController : MonoBehaviour
 
     void Update()
     {
-        if (OVRInput.GetDown(OVRInput.RawButton.A) && OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger) < 0.1f && OVRInput.Get(OVRInput.Axis1D.SecondaryHandTrigger) < 0.1f)
-        {
-            // Code to execute when A button is pressed and neither hand trigger is pressed
-        }
 
         //if (OVRInput.GetDown(OVRInput.RawButton.A))
+        if (OVRInput.GetDown(OVRInput.RawButton.A) && OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger) < 0.1f && OVRInput.Get(OVRInput.Axis1D.SecondaryHandTrigger) < 0.1f)
         {
             isMoving = !isMoving;
         }
