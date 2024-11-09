@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR;
 using Meta.XR;
 
 public class BikeCarController : MonoBehaviour
@@ -8,6 +9,7 @@ public class BikeCarController : MonoBehaviour
     public float speed = 5.0f;
     public float turnSpeed = 5.0f; // Stable turn speed multiplier
     public bool isMoving = false;
+    public float stopSmoothness = 5;
 
     public HandlesController handlesController;  // Reference to handlesController
 
@@ -25,21 +27,22 @@ public class BikeCarController : MonoBehaviour
     void Update()
     {
 
-        //if (OVRInput.GetDown(OVRInput.RawButton.A))
-        if (OVRInput.GetDown(OVRInput.RawButton.A) && OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger) < 0.1f && OVRInput.Get(OVRInput.Axis1D.SecondaryHandTrigger) < 0.1f)
+        if (OVRInput.GetDown(OVRInput.RawButton.A))
         {
             isMoving = !isMoving;
+            Debug.Log("isMoving is now: " + isMoving);
         }
 
         ApplySteering();
+
         if (isMoving)
         {
             MoveForward();
-
         }
         else
         {
-            carRb.velocity = Vector3.zero; // Stop the car when not moving
+            carRb.velocity = Vector3.Lerp(carRb.velocity, Vector3.zero, Time.deltaTime * stopSmoothness);
+            //carRb.velocity = Vector3.zero; // Stop the car when not moving
         }
     }
 
