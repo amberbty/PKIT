@@ -10556,7 +10556,7 @@ MonoBehaviour:
   _twoGrabTransformer: {fileID: 707528268}
   _targetTransform: {fileID: 0}
   _maxGrabPoints: -1
-  _rigidbody: {fileID: 0}
+  _rigidbody: {fileID: 707528266}
   _kinematicWhileSelected: 1
   _throwWhenUnselected: 1
 --- !u!114 &707528268
