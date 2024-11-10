@@ -55,7 +55,7 @@ public class CarController : MonoBehaviour
         }
         else
         {
-            ReturnToNeutral();
+            //ReturnToNeutral();
         }
 
         ApplySteering();
@@ -94,13 +94,13 @@ public class CarController : MonoBehaviour
             float handRotationZDelta = handRotationDelta.eulerAngles.z;
 
             // Calculate the speed at which the hand is rotating
-            float rotationSpeed = Mathf.Abs(handRotationZDelta * steeringRotationSpeed * Time.deltaTime);
+            float steerSpeed = Mathf.Abs(handRotationZDelta * steeringRotationSpeed * Time.deltaTime);
 
             // Limit the rotation speed
-            rotationSpeed = Mathf.Min(rotationSpeed, maxRotationSpeed * Time.deltaTime); // Limit to max speed
+            steerSpeed = Mathf.Min(steerSpeed, maxRotationSpeed * Time.deltaTime); // Limit to max speed
 
             // Update the steering angle smoothly
-            steeringAngle = Mathf.Lerp(previousSteeringAngle, previousSteeringAngle + handRotationZDelta, rotationSpeed);
+            steeringAngle = Mathf.Lerp(previousSteeringAngle, previousSteeringAngle + handRotationZDelta, steerSpeed);
 
             // Clamp the steering angle to the desired limit
             steeringAngle = Mathf.Clamp(steeringAngle, -steeringLimitAngle, steeringLimitAngle);
@@ -116,6 +116,7 @@ public class CarController : MonoBehaviour
         }
     }
 
+    /*
     private void ReturnToNeutral()
     {
         // Smoothly return to neutral position if not grabbed
@@ -126,6 +127,7 @@ public class CarController : MonoBehaviour
             steeringWheel.transform.localRotation = initialRotation * Quaternion.Euler(0, 0, -steeringAngle);
         }
     }
+    */
 
     private void ApplySteering()
     {
