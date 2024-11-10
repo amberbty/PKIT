@@ -8502,57 +8502,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 414567563}
   m_SourcePrefab: {fileID: 100100000, guid: be04acb3356f2cb4b9dfd60d8dcb935e, type: 3}
---- !u!1 &890062734
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 890062735}
-  - component: {fileID: 890062736}
-  m_Layer: 0
-  m_Name: Player Space
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &890062735
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 890062734}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.27829197, y: 1.0543875, z: 0.5251171}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &890062736
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 890062734}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9181d866f8c78e0469c1713575978dd3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5
-  turnSpeed: 5
-  isMoving: 0
-  virtualSteeringWheel: {fileID: 0}
-  onButtonPress:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1001 &908391481
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14183,7 +14132,12 @@ MonoBehaviour:
   speed: 5
   turnSpeed: 5
   isMoving: 0
-  virtualSteeringWheel: {fileID: 1984958546}
+  steeringWheel: {fileID: 1984958535}
+  steeringRotationSpeed: 60
+  returnSpeed: 2
+  steeringLimitAngle: 100
+  leftHandTracking: {fileID: 557872646}
+  rightHandTracking: {fileID: 1049905445}
   onButtonPress:
     m_PersistentCalls:
       m_Calls: []
@@ -19520,7 +19474,6 @@ GameObject:
   - component: {fileID: 1984958537}
   - component: {fileID: 1984958539}
   - component: {fileID: 1984958544}
-  - component: {fileID: 1984958546}
   - component: {fileID: 1984958545}
   m_Layer: 6
   m_Name: SteeringWheel
@@ -19740,23 +19693,6 @@ MonoBehaviour:
     MaxAngle:
       Constrain: 0
       Value: 0
---- !u!114 &1984958546
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1984958535}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce731b88b088b554d9016f725319a721, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  steeringRotationSpeed: 60
-  returnSpeed: 2
-  steeringLimitAngle: 100
-  leftHandTracking: {fileID: 557872646}
-  rightHandTracking: {fileID: 1049905445}
 --- !u!1001 &1985930795
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21617,4 +21553,3 @@ SceneRoots:
   - {fileID: 1103446329}
   - {fileID: 1299841949}
   - {fileID: 1518633621}
-  - {fileID: 890062735}
