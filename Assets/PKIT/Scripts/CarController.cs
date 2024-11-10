@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events; // To use UnityEvent
 
 public class CarController : MonoBehaviour
 {
@@ -13,19 +14,22 @@ public class CarController : MonoBehaviour
     private Rigidbody carRb;
     private Quaternion initialRotation;
 
+    public UnityEvent onButtonPress; // Event to be triggered by the button press
+
     void Start()
     {
         carRb = GetComponent<Rigidbody>();
         carRb.drag = 2f;
         carRb.angularDrag = 2f;
         initialRotation = transform.localRotation;
+
+        if (onButtonPress == null)
+            onButtonPress = new UnityEvent();
     }
 
     void Update()
     {
-        if (OVRInput.GetDown(OVRInput.RawButton.A)) {
-            isMoving = !isMoving;
-        }
+        
 
         ApplySteering();
         if (isMoving)
@@ -37,6 +41,12 @@ public class CarController : MonoBehaviour
         {
             carRb.velocity = Vector3.zero; // Stop the car when not moving
         }
+    }
+
+
+    public void ToggleCarMovement()
+    {
+        isMoving = !isMoving; // Toggle the movement state
     }
 
     private void MoveForward()
