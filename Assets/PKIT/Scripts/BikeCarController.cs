@@ -26,13 +26,6 @@ public class BikeCarController : MonoBehaviour
 
     void Update()
     {
-
-        if (OVRInput.GetDown(OVRInput.RawButton.A))
-        {
-            isMoving = !isMoving;
-            Debug.Log("isMoving is now: " + isMoving);
-        }
-
         ApplySteering();
 
         if (isMoving)
@@ -46,15 +39,17 @@ public class BikeCarController : MonoBehaviour
         }
     }
 
+
+    public void ToggleCarMovement()
+    {
+        isMoving = !isMoving; // Toggle the movement state
+    }
+
     private void MoveForward()
     {
         // Move the car forward along its current forward direction
         carRb.velocity = transform.forward * speed;
 
-
-        // Apply forward force based on Player Space's current forward direction
-        // Vector3 forwardDirection = transform.forward * speed;
-        // carRb.velocity = forwardDirection;
     }
 
     private void ApplySteering()

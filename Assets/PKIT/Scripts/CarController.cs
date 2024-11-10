@@ -29,13 +29,10 @@ public class CarController : MonoBehaviour
 
     void Update()
     {
-        
-
         ApplySteering();
         if (isMoving)
         {
             MoveForward();
-            
         }
         else
         {
@@ -53,7 +50,6 @@ public class CarController : MonoBehaviour
     {
         // Move the car forward along its current forward direction
         carRb.velocity = transform.forward * speed;
-
 
         // Apply forward force based on Player Space's current forward direction
         // Vector3 forwardDirection = transform.forward * speed;
