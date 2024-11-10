@@ -15,14 +15,14 @@ public class WheelController : MonoBehaviour
     private float steerSpeed = 100f; // Speed of moving the wheel when holding down A or D key
 
 
-    private float initialWheelRotationY; // Store the initial position of the wheel
+    private float initialWheelRotationZ; // Store the initial position of the wheel
     private float initialCarRotationY; // Store the initial Y rotation of the car
 
     // Start is called before the first frame update
     void Start()
     {
         // Capture the initial rotations
-        //initialWheelRotationY = wheelTransform.localRotation.eulerAngles.z;
+        //initialWheelRotation = wheelTransform.localRotation.eulerAngles.z;
         initialCarRotationY = carTransform.localRotation.eulerAngles.y; // Get the initial Y rotation of the car
     }
 
@@ -66,6 +66,6 @@ public class WheelController : MonoBehaviour
         float carRotationY = steeringRatio * maxRotation;
 
         // Apply the calculated car rotation, adjusted by the initial Y rotation
-        carTransform.localRotation = Quaternion.Euler(0, initialCarRotationY - carRotationY, 0);
+        carTransform.localRotation = Quaternion.Euler(0, initialCarRotationY + carRotationY, 0);
     }
 }
