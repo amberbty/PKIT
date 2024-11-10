@@ -14,6 +14,8 @@ public class CarController : MonoBehaviour
 
     // Steering Wheel settings
     public float steeringRotationSpeed = 60f;
+    private float previousSteeringAngle = 0f; // To store the previous steering angle
+    public float maxRotationSpeed = 100f; // Maximum allowed rotation speed (degrees per second)
     public float returnSpeed = 2f;
     public float steeringLimitAngle = 100f;
 
@@ -87,11 +89,26 @@ public class CarController : MonoBehaviour
 
         if (grabbingHand != null)
         {
+            // Calculate the rotation difference
             Quaternion handRotationDelta = Quaternion.Inverse(initialHandRotation) * grabbingHand.transform.rotation;
-            steeringAngle += handRotationDelta.eulerAngles.z * steeringRotationSpeed * Time.deltaTime;
+            float handRotationZDelta = handRotationDelta.eulerAngles.z;
+
+            // Calculate the speed at which the hand is rotating
+            float rotationSpeed = Mathf.Abs(handRotationZDelta * steeringRotationSpeed * Time.deltaTime);
+
+            // Limit the rotation speed
+            rotationSpeed = Mathf.Min(rotationSpeed, maxRotationSpeed * Time.deltaTime); // Limit to max speed
+
+            // Update the steering angle smoothly
+            steeringAngle = Mathf.Lerp(previousSteeringAngle, previousSteeringAngle + handRotationZDelta, rotationSpeed);
+
+            // Clamp the steering angle to the desired limit
             steeringAngle = Mathf.Clamp(steeringAngle, -steeringLimitAngle, steeringLimitAngle);
 
-            // Apply rotation to the steering wheel (if a steeringWheel reference is set)
+            // Update the previous steering angle for the next frame
+            previousSteeringAngle = steeringAngle;
+
+            // Apply rotation to the steering wheel
             if (steeringWheel != null)
             {
                 steeringWheel.transform.localRotation = initialRotation * Quaternion.Euler(0, 0, -steeringAngle);
