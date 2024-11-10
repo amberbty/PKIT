@@ -47,8 +47,9 @@ public class WheelController : MonoBehaviour
 
         // Calculate the wheel's current rotation angle around the Z-axis (local rotation)
         float wheelRotationZ = wheelTransform.localEulerAngles.z;
+        
 
-        // Convert `newSteeringWheelZ` to the -180 to 180 range
+        // Convert newSteeringWheelZ to the -180 to 180 range
         if (newSteeringWheelZ > 180f) newSteeringWheelZ -= 360f;
 
         // Apply the rotation to the steering wheel transform
@@ -59,7 +60,7 @@ public class WheelController : MonoBehaviour
         );
 
         // Calculate a normalized rotation value (-1 to 1) based on steering wheel rotation
-        float steeringRatio = Mathf.InverseLerp(leftWheelLimitZ, rightWheelLimitZ, newSteeringWheelZ) * 2f - 1f;
+        float steeringRatio = Mathf.InverseLerp(leftWheelLimitZ, rightWheelLimitZ, newSteeringWheelZ); 
 
         // Calculate the car's rotation based on the steering wheel's position
         float carRotationY = steeringRatio * maxRotation;
