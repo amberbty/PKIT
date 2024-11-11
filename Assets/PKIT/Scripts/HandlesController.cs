@@ -10,10 +10,13 @@ public class HandlesController : MonoBehaviour
 
     public bool isGrabbed = false;
 
-    public Quaternion initialHandlesLocalRotation;  // Initial local rotation of the bike handles when grabbing starts
-    public Quaternion currentHandlesLocalRotation;  // Current local rotation of the bike handles
+    private Quaternion initialHandlesLocalRotation;  // Initial local rotation of the bike handles when grabbing starts
+    private Quaternion currentHandlesLocalRotation;  // Current local rotation of the bike handles
 
     private float currentSteeringAngle = 0f;    // The current steering angle of the car (from 0 to max turn angle)
+    private float initialY;                         // Initial y rotation of the bike handles (in degrees)
+
+    private float carInitialYRotation;               // Initial y rotation of the car (in degrees)
 
     public OVRHand leftHandTracking;
     public OVRHand rightHandTracking;
@@ -30,26 +33,28 @@ public class HandlesController : MonoBehaviour
 
         // Store the initial neutral rotation of the handles (to calculate rotation delta later)
         initialHandlesLocalRotation = transform.localRotation;
+        initialY = initialHandlesLocalRotation.eulerAngles.y;
+
+        carInitialYRotation = carTransform.localRotation.eulerAngles.y;
 
     }
 
     void Update()
     {
         // Detect the current rotation of the bike handles
-        currentHandlesLocalRotation = transform.localRotation;
+        float currentY = transform.localRotation.eulerAngles.y;
 
-
-        // Calculate the steering angle based on the rotation difference between initial and current
-        CalculateSteeringAngle();
+        // Calculate the steering angle based on the rotation difference along the y-axis
+        CalculateSteeringAngle(currentY);
 
         // Apply the calculated steering angle to the car
         ApplySteeringAngleToCar();
     }
 
-    private void CalculateSteeringAngle()
+    private void CalculateSteeringAngle(float currentY)
     {
-        // Calculate the angle between the initial rotation and the current rotation
-        float rotationDifference = Quaternion.Angle(initialHandlesLocalRotation, currentHandlesLocalRotation);
+        // Calculate the y-axis rotation difference from the initial handle rotation
+        float rotationDifference = Mathf.DeltaAngle(initialY, currentY);
 
         // Optionally, consider smoothing the rotation to avoid abrupt changes
         currentSteeringAngle = Mathf.Lerp(currentSteeringAngle, rotationDifference, Time.deltaTime * steeringRotationSpeed);
@@ -63,6 +68,6 @@ public class HandlesController : MonoBehaviour
         // Apply the calculated steering angle to the car's steering system (assuming it's based on local rotation)
         // This could be done by rotating the car or applying torque depending on your car's steering system
 
-        carTransform.localRotation = Quaternion.Euler(0f, currentSteeringAngle, 0f);
+        carTransform.localRotation = Quaternion.Euler(0f, carInitialYRotation + currentSteeringAngle, 0f);
     }
 }
