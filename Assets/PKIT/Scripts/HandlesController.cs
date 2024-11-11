@@ -31,7 +31,7 @@ public class HandlesController : MonoBehaviour
 
         if (isGrabbed)
         {
-            RotateWheelWithHand();
+            RotateHandlesWithHand();
         }
         else
         {
@@ -80,7 +80,7 @@ public class HandlesController : MonoBehaviour
         */
     }
 
-    private void RotateWheelWithHand()
+    private void RotateHandlesWithHand()
     {
         // Use the grabbing hand to calculate rotation
         OVRHand grabbingHand = leftHandTracking.IsTracked ? leftHandTracking : rightHandTracking;

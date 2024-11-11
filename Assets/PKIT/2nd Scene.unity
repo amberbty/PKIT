@@ -9548,6 +9548,7 @@ GameObject:
   - component: {fileID: 707528270}
   - component: {fileID: 707528269}
   - component: {fileID: 707528268}
+  - component: {fileID: 707528272}
   - component: {fileID: 707528271}
   m_Layer: 6
   m_Name: Bike Handles
@@ -9683,8 +9684,8 @@ MonoBehaviour:
   isGrabbed: 0
   leftHandTracking: {fileID: 1298577602}
   rightHandTracking: {fileID: 566156601}
---- !u!64 &707528271
-MeshCollider:
+--- !u!136 &707528271
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -9700,11 +9701,35 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.01
+  m_Height: 0.1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.025, z: -0.135}
+--- !u!136 &707528272
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 707528264}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.01
+  m_Height: 0.1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.025, z: 0.135}
 --- !u!1 &725859663
 GameObject:
   m_ObjectHideFlags: 0

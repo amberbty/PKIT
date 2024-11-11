@@ -46,10 +46,6 @@ public class WheelController : MonoBehaviour
             // Rotate the steering wheel right, clamping to the max right rotation
             newSteeringWheelZ -= steerSpeed * Time.deltaTime;
         }
-
-
-        // Calculate the wheel's current rotation angle around the Z-axis (local rotation)
-        float wheelRotationZ = wheelTransform.localEulerAngles.z;
         
 
         // Convert newSteeringWheelZ to the -180 to 180 rangea
