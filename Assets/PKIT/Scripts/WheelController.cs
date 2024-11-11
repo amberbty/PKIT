@@ -14,7 +14,7 @@ public class WheelController : MonoBehaviour
 
     private float maxRotation = 45f; // Max rotation of the car in degrees
     private float steerSpeed = 100f; // Speed of moving the wheel when holding down A or D key
-    float newSteeringWheelZ;
+    float newSteeringWheelZ; 
     public float returnSpeed = 2f;
 
 
