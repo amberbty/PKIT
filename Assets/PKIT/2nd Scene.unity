@@ -7686,8 +7686,6 @@ MonoBehaviour:
   steeringRotationSpeed: 60
   returnSpeed: 2
   isGrabbed: 0
-  initialHandlesLocalRotation: {x: 0, y: 0, z: 0, w: 0}
-  currentHandlesLocalRotation: {x: 0, y: 0, z: 0, w: 0}
   leftHandTracking: {fileID: 2168916184809191038}
   rightHandTracking: {fileID: 2621798408969397190}
 --- !u!136 &827516057
