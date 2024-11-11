@@ -54,6 +54,11 @@ public class HandlesController : MonoBehaviour
         // Apply the calculated steering angle to the car
         ApplySteeringAngleToCar();
 
+        if (!isGrabbed)
+        {
+            SmoothReturnToInitialRotation();
+        }
+
         if (isMoving)
         {
             MoveForward();
@@ -101,5 +106,21 @@ public class HandlesController : MonoBehaviour
         // Move the car forward along its current forward direction
         carRb.velocity = carTransform.rotation * Vector3.forward * carSpeed;
         //carRb.velocity = transform.forward * carSpeed;
+    }
+
+    private void SmoothReturnToInitialRotation()
+    {
+        // Smoothly return the handle to its initial rotation when released
+        transform.localRotation = Quaternion.Slerp(transform.localRotation, initialHandlesLocalRotation, Time.deltaTime * returnSpeed);
+    }
+
+    public void StartGrabbingHandle()
+    {
+        isGrabbed = true;
+    }
+
+    public void StopGrabbingHandle()
+    {
+        isGrabbed = false;
     }
 }
