@@ -6390,6 +6390,12 @@ MonoBehaviour:
   isMoving: 0
   stopSmoothness: 5
   handlesController: {fileID: 827516056}
+--- !u!54 &703240878 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 54143248509988628, guid: c9643380c3b12e3428f59ad8efafcab9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1626146355}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &703813605
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7685,7 +7691,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   steeringRotationSpeed: 60
   returnSpeed: 2
+  isMoving: 0
   isGrabbed: 0
+  initialHandlesLocalRotation: {x: 0, y: 0, z: 0, w: 0}
+  currentHandlesLocalRotation: {x: 0, y: 0, z: 0, w: 0}
+  carRb: {fileID: 703240878}
+  carSpeed: 5
   leftHandTracking: {fileID: 2168916184809191038}
   rightHandTracking: {fileID: 2621798408969397190}
 --- !u!136 &827516057
@@ -15848,7 +15859,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 703240877}
+      objectReference: {fileID: 827516056}
     - target: {fileID: 7516989854015812293, guid: d2d6934a666a18d46b8b7a3864dc9f63,
         type: 3}
       propertyPath: _whenUnselect.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
@@ -15877,7 +15888,7 @@ PrefabInstance:
     - target: {fileID: 7516989854015812293, guid: d2d6934a666a18d46b8b7a3864dc9f63,
         type: 3}
       propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: BikeCarController, Assembly-CSharp
+      value: HandlesController, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7516989854015812293, guid: d2d6934a666a18d46b8b7a3864dc9f63,
         type: 3}

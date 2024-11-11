@@ -8,6 +8,7 @@ public class HandlesController : MonoBehaviour
     public float steeringRotationSpeed = 60f;
     public float returnSpeed = 2f;
 
+    public bool isMoving = false;
     public bool isGrabbed = false;
 
     public Quaternion initialHandlesLocalRotation;  // Initial local rotation of the bike handles when grabbing starts
@@ -17,6 +18,9 @@ public class HandlesController : MonoBehaviour
     private float initialY;                          // Initial y rotation of the bike handles (in degrees)
 
     private float carInitialYRotation;               // Initial y rotation of the car (in degrees)
+    public Rigidbody carRb;
+    public float carSpeed = 5.0f;
+    private float stopSmoothness = 5f;
 
     public OVRHand leftHandTracking;
     public OVRHand rightHandTracking;
@@ -49,6 +53,15 @@ public class HandlesController : MonoBehaviour
 
         // Apply the calculated steering angle to the car
         ApplySteeringAngleToCar();
+
+        if (isMoving)
+        {
+            MoveForward();
+        }
+        else
+        {
+            carRb.velocity = Vector3.Lerp(carRb.velocity, Vector3.zero, Time.deltaTime * stopSmoothness);
+        }
     }
 
     private void CalculateSteeringAngle(float currentY)
@@ -69,5 +82,17 @@ public class HandlesController : MonoBehaviour
         // This could be done by rotating the car or applying torque depending on your car's steering system
 
         carTransform.localRotation = Quaternion.Euler(0f, carInitialYRotation + currentSteeringAngle, 0f);
+    }
+
+    public void ToggleCarMovement()
+    {
+        isMoving = !isMoving; // Toggle the movement state
+    }
+
+    private void MoveForward()
+    {
+        // Move the car forward along its current forward direction
+        carRb.velocity = carTransform.rotation * Vector3.forward * carSpeed;
+        //carRb.velocity = transform.forward * carSpeed;
     }
 }
