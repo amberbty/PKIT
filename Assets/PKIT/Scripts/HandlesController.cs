@@ -80,8 +80,15 @@ public class HandlesController : MonoBehaviour
     {
         // Apply the calculated steering angle to the car's steering system (assuming it's based on local rotation)
         // This could be done by rotating the car or applying torque depending on your car's steering system
+        //carTransform.localRotation = Quaternion.Euler(0f, carInitialYRotation + currentSteeringAngle, 0f);
 
-        carTransform.localRotation = Quaternion.Euler(0f, carInitialYRotation + currentSteeringAngle, 0f);
+
+        // Incrementally update the steering angle, so it accumulates with each frame
+        // Instead of resetting the steering angle each frame, we accumulate the steering angle over time
+        carInitialYRotation += currentSteeringAngle * Time.deltaTime;
+
+        // Apply the cumulative steering angle to the car's local rotation
+        carTransform.localRotation = Quaternion.Euler(0f, carInitialYRotation, 0f);
     }
 
     public void ToggleCarMovement()
