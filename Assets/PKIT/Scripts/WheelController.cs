@@ -9,8 +9,8 @@ public class WheelController : MonoBehaviour
     public GameObject car;
 
     // Define the limits for the wheel's rotation around the Z-axis
-    public float leftWheelLimitZ = 350f; // Maximum left rotation in degrees
-    public float rightWheelLimitZ = -350f; // Maximum right rotation in degrees
+    public float leftWheelLimitZ = 358f; // Maximum left rotation in degrees
+    public float rightWheelLimitZ = -358f; // Maximum right rotation in degrees
 
     private float maxRotation = 45f; // Max rotation of the car in degrees
     private float steerSpeed = 100f; // Speed of moving the wheel when holding down A or D key
@@ -25,7 +25,7 @@ public class WheelController : MonoBehaviour
     void Start()
     {
         // Capture the initial rotations
-        //initialWheelRotation = wheelTransform.localRotation.eulerAngles.z;
+        //initialWheelRotationZ = wheelTransform.localRotation.eulerAngles.z;
         initialCarRotationY = car.transform.localRotation.eulerAngles.y; // Get the initial Y rotation of the car
     }
 
@@ -52,8 +52,8 @@ public class WheelController : MonoBehaviour
         float wheelRotationZ = wheelTransform.localEulerAngles.z;
         
 
-        // Convert newSteeringWheelZ to the -180 to 180 range
-        if (newSteeringWheelZ > 180f) newSteeringWheelZ -= 360f;
+        // Convert newSteeringWheelZ to the -180 to 180 rangea
+        //if (newSteeringWheelZ > 180f) newSteeringWheelZ -= 360f;
 
         // Apply the rotation to the steering wheel transform
         wheelTransform.localEulerAngles = new Vector3(
@@ -78,7 +78,7 @@ public class WheelController : MonoBehaviour
     {
         if (!(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)))
         {
-            // Smoothly return to neutral position if not grabbed
+            // Smoothly interpolate towards neutral rotation
             newSteeringWheelZ = Mathf.Lerp(newSteeringWheelZ, 0f, Time.deltaTime * returnSpeed);
 
             transform.localRotation = Quaternion.Euler(0, 0, newSteeringWheelZ);

@@ -19706,8 +19706,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wheelTransform: {fileID: 1984958536}
   car: {fileID: 1518633622}
-  leftWheelLimitZ: 350
-  rightWheelLimitZ: -350
+  leftWheelLimitZ: 358
+  rightWheelLimitZ: -358
   returnSpeed: 2
 --- !u!1001 &1985930795
 PrefabInstance:
