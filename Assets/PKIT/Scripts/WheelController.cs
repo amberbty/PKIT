@@ -81,7 +81,7 @@ public class WheelController : MonoBehaviour
             // Smoothly return to neutral position if not grabbed
             newSteeringWheelZ = Mathf.Lerp(newSteeringWheelZ, 0f, Time.deltaTime * returnSpeed);
 
-            transform.localRotation = Quaternion.Euler(0, 0, initialWheelRotationZ - newSteeringWheelZ);
+            transform.localRotation = Quaternion.Euler(0, 0, newSteeringWheelZ);
         }
     }
 }
