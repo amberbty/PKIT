@@ -7,104 +7,62 @@ public class HandlesController : MonoBehaviour
 {
     public float steeringRotationSpeed = 60f;
     public float returnSpeed = 2f;
-    public float steeringLimitAngle = 100f;
 
-    private float steeringAngle = 0f;
     public bool isGrabbed = false;
 
+    public Quaternion initialHandlesLocalRotation;  // Initial local rotation of the bike handles when grabbing starts
+    public Quaternion currentHandlesLocalRotation;  // Current local rotation of the bike handles
+
+    private float currentSteeringAngle = 0f;    // The current steering angle of the car (from 0 to max turn angle)
 
     public OVRHand leftHandTracking;
     public OVRHand rightHandTracking;
 
-    private Quaternion initialRotation;
-    private Quaternion initialHandRotation;
+    private Transform carTransform; // The car transform (you can use a car steering component or transform to apply the steering)
 
     void Start()
     {
-        initialRotation = transform.localRotation;
-        //isGrabbed = false;  // Set `isGrabbed` to false only at the start
+        // Ensure the car transform is assigned
+        if (carTransform == null)
+        {
+            carTransform = GameObject.FindGameObjectWithTag("Car").transform;  // Example: find the car by tag
+        }
+
+        // Store the initial neutral rotation of the handles (to calculate rotation delta later)
+        initialHandlesLocalRotation = transform.localRotation;
+
     }
 
     void Update()
     {
-        CheckHandGrabs();
+        // Detect the current rotation of the bike handles
+        currentHandlesLocalRotation = transform.localRotation;
 
-        if (isGrabbed)
-        {
-            RotateHandlesWithHand();
-        }
-        else
-        {
-            ReturnToNeutral();
-        }
 
+        // Calculate the steering angle based on the rotation difference between initial and current
+        CalculateSteeringAngle();
+
+        // Apply the calculated steering angle to the car
+        ApplySteeringAngleToCar();
     }
 
-    private void CheckHandGrabs()
+    private void CalculateSteeringAngle()
     {
-        // Check if either hand is in a grabbing pose
-        isGrabbed = (leftHandTracking && leftHandTracking.IsTracked) || (rightHandTracking && rightHandTracking.IsTracked);
+        // Calculate the angle between the initial rotation and the current rotation
+        float rotationDifference = Quaternion.Angle(initialHandlesLocalRotation, currentHandlesLocalRotation);
 
-        if (isGrabbed && initialHandRotation == Quaternion.identity)
-        {
-            // Set the initial rotation to start rotation calculations when grabbing starts
-            initialHandRotation = leftHandTracking.IsTracked ? leftHandTracking.transform.rotation : rightHandTracking.transform.rotation;
-        }
+        // Optionally, consider smoothing the rotation to avoid abrupt changes
+        currentSteeringAngle = Mathf.Lerp(currentSteeringAngle, rotationDifference, Time.deltaTime * steeringRotationSpeed);
 
-        /*bool leftHandGrabbed = leftHandTracking && leftHandTracking.IsTracked && leftHandTracking.GetFingerIsPinching(OVRHand.HandFinger.Index);
-        bool rightHandGrabbed = rightHandTracking && rightHandTracking.IsTracked && rightHandTracking.GetFingerIsPinching(OVRHand.HandFinger.Index);
-
-        if ((leftHandGrabbed || rightHandGrabbed) && !isGrabbed)
-        {
-            isGrabbed = true;
-            initialHandRotation = leftHandGrabbed ? leftHandTracking.transform.rotation : rightHandTracking.transform.rotation;
-        }
-        else if (!leftHandGrabbed && !rightHandGrabbed)
-        {
-            isGrabbed = false;
-        }
-        */
-
-
-        /*
-        // Check if either hand is in a grabbing pose
-        isGrabbed = (leftHandTracking && leftHandTracking.IsTracked && leftHandTracking.GetFingerIsPinching(OVRHand.HandFinger.Index)) ||
-                (rightHandTracking && rightHandTracking.IsTracked && rightHandTracking.GetFingerIsPinching(OVRHand.HandFinger.Index));
-        //isGrabbed = (leftHandTracking && leftHandTracking.IsTracked) || (rightHandTracking && rightHandTracking.IsTracked);
-
-        if (isGrabbed && initialHandRotation == Quaternion.identity)
-        {
-            // Set the initial rotation to start rotation calculations when grabbing starts
-            initialHandRotation = leftHandTracking.IsTracked ? leftHandTracking.transform.rotation : rightHandTracking.transform.rotation;
-        }
-        */
+        // Map the rotation difference to the steering angle of the car (e.g., clamp it to a max steering angle)
+        currentSteeringAngle = Mathf.Clamp(currentSteeringAngle, -45f, 45f);
     }
 
-    private void RotateHandlesWithHand()
+    private void ApplySteeringAngleToCar()
     {
-        // Use the grabbing hand to calculate rotation
-        OVRHand grabbingHand = leftHandTracking.IsTracked ? leftHandTracking : rightHandTracking;
+        // Apply the calculated steering angle to the car's steering system (assuming it's based on local rotation)
+        // This could be done by rotating the car or applying torque depending on your car's steering system
 
-        if (grabbingHand != null)
-        {
-            Quaternion handRotationDelta = Quaternion.Inverse(initialHandRotation) * grabbingHand.transform.rotation;
-            steeringAngle += handRotationDelta.eulerAngles.y * steeringRotationSpeed * Time.deltaTime;
-            steeringAngle = Mathf.Clamp(steeringAngle, -steeringLimitAngle, steeringLimitAngle);
-
-            // Apply rotation to the wheel
-            transform.localRotation = initialRotation * Quaternion.Euler(0, -steeringAngle, 0);
-        }
-    }
-
-    private void ReturnToNeutral()
-    {
-        // Smoothly return to neutral position if not grabbed
-        steeringAngle = Mathf.Lerp(steeringAngle, 0f, Time.deltaTime * returnSpeed);
-        transform.localRotation = initialRotation * Quaternion.Euler(0, -steeringAngle, 0);
-    }
-
-    public float GetSteeringAngle()
-    {
-        return steeringAngle;
+        carTransform.localRotation = Quaternion.Euler(0f, currentSteeringAngle, 0f);
     }
 }

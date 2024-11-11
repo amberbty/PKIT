@@ -55,14 +55,14 @@ public class BikeCarController : MonoBehaviour
     private void ApplySteering()
     {
         // Get the steering angle and rotation speed from WheelController
-        float steeringAngle = handlesController.GetSteeringAngle();
+        //float steeringAngle = handlesController.GetSteeringAngle();
 
         // Scale the steering angle by steeringRotationSpeed to set the turning speed
-        float turnAngle = steeringAngle * turnSpeed * Time.deltaTime;
+        //float turnAngle = steeringAngle * turnSpeed * Time.deltaTime;
 
         //Rotate the car around the Y-axis
         //transform.Rotate(Vector3.up, turnAngle);
         //transform.localRotation = initialRotation * Quaternion.Euler(0, -steeringAngle, 0);
-        carRb.MoveRotation(carRb.rotation * Quaternion.Euler(0, turnAngle, 0));
+        //carRb.MoveRotation(carRb.rotation * Quaternion.Euler(0, turnAngle, 0));
     }
 }
