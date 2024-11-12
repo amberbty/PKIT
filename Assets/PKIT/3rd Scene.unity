@@ -7205,6 +7205,7 @@ MonoBehaviour:
   leftLimit: {x: -0.16, y: 0, z: 0}
   rightLimit: {x: 0.16, y: 0, z: 0}
   returnSpeed: 2
+  steeringRotationSpeed: 60
   carSpeed: 5
   isMoving: 0
   isGrabbed: 0
@@ -21246,7 +21247,7 @@ MonoBehaviour:
       Value: -0.16
     MaxX:
       Constrain: 1
-      Value: 0.16
+      Value: 0.1567
     MinY:
       Constrain: 1
       Value: 0
@@ -21821,8 +21822,9 @@ MonoBehaviour:
   carTransform: {fileID: 1478630288}
   dickTransform: {fileID: 7972982140172586234}
   leftLimit: {x: -0.16, y: 0, z: 0}
-  rightLimit: {x: 0.16, y: 0, z: 0}
+  rightLimit: {x: 0.1567, y: 0, z: 0}
   returnSpeed: 1
+  steeringRotationSpeed: 60
   carSpeed: 5
   isMoving: 0
   isGrabbed: 0

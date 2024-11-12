@@ -11,7 +11,7 @@ public class DickController : MonoBehaviour
     public Transform carTransform; // Reference to the car's transform
     public Transform dickTransform; // Reference to the dick (handle) transform
     public Vector3 leftLimit = new Vector3(-0.16f, 0f, 0f);  // Left position limit for the slider
-    public Vector3 rightLimit = new Vector3(0.16f, 0f, 0f); // Right position limit for the slider
+    public Vector3 rightLimit = new Vector3(0.1567f, 0f, 0f); // Right position limit for the slider
     private float maxRotation = 45f; // Max rotation of the car in degrees
     private float moveSpeed = 0.2f; // Speed of moving the handle
     public float returnSpeed = 1f;
