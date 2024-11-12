@@ -3389,7 +3389,7 @@ Transform:
   m_GameObject: {fileID: 350297469}
   serializedVersion: 2
   m_LocalRotation: {x: -0.010938392, y: -0.004348397, z: -0.04370955, w: 0.9989749}
-  m_LocalPosition: {x: 0.012015158, y: 0.008118403, z: -0.0037970506}
+  m_LocalPosition: {x: 0.0001, y: 0.0092, z: -0.0039}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5654,7 +5654,7 @@ Transform:
   m_GameObject: {fileID: 579229713}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.0000000074505797, w: 1}
-  m_LocalPosition: {x: -0.0143, y: -0.0024, z: 0.0038}
+  m_LocalPosition: {x: -0.0143, y: 0.0147, z: 0.0038}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9846,13 +9846,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1049665611}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: 0.0000000074505797, w: 1}
-  m_LocalPosition: {x: 0.011, y: 0.0107, z: -0.0039}
+  m_LocalRotation: {x: 0.00000010896471, y: 0.100957386, z: -0.000000052154054, w: 0.99489075}
+  m_LocalPosition: {x: -0.000064912776, y: 0.010700782, z: -0.024635328}
   m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1603281898}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 11.589, z: 0}
 --- !u!1 &1049905442
 GameObject:
   m_ObjectHideFlags: 0
@@ -11626,7 +11626,7 @@ Transform:
   m_GameObject: {fileID: 1259274917}
   serializedVersion: 2
   m_LocalRotation: {x: -0.014503596, y: -0.005765691, z: -0.057960935, w: 0.99819684}
-  m_LocalPosition: {x: -0.015343344, y: 0.00017022481, z: 0.0039055431}
+  m_LocalPosition: {x: -0.0221, y: 0.001, z: 0.0038}
   m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -19987,7 +19987,6 @@ MonoBehaviour:
   carSpeed: 5
   leftHandTracking: {fileID: 557872646}
   rightHandTracking: {fileID: 1049905445}
-  wheelTransform: {fileID: 1984958536}
 --- !u!114 &1984958547
 MonoBehaviour:
   m_ObjectHideFlags: 0
