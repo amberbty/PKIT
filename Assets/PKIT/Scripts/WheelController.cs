@@ -1,9 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Meta.XR; 
 
 public class WheelController : MonoBehaviour
 {
+    public float steeringRotationSpeed = 60f;
+    public float returnSpeed = 2f;
+
+    public bool isMoving = false;
+    public bool isGrabbed = false;
+
+
+
+
     public Transform wheelTransform; // Reference to the wheel transform
 
     public GameObject car;
@@ -15,7 +25,6 @@ public class WheelController : MonoBehaviour
     private float maxRotation = 45f; // Max rotation of the car in degrees
     private float steerSpeed = 100f; // Speed of moving the wheel when holding down A or D key
     float newSteeringWheelZ; 
-    public float returnSpeed = 2f;
 
 
     private float initialWheelRotationZ; // Store the initial position of the wheel
