@@ -77,18 +77,6 @@ public class WheelController : MonoBehaviour
         /*
         // Get input for rotating the steering wheel (left or right)
         newSteeringWheelZ = wheelTransform.localEulerAngles.z;
-
-        // Move the handle left or right based on input
-        if (Input.GetKey(KeyCode.A))
-        {
-            // Rotate the steering wheel left, clamping to the max left rotation
-            newSteeringWheelZ += steerSpeed * Time.deltaTime;
-        }
-        else if (Input.GetKey(KeyCode.D))
-        {
-            // Rotate the steering wheel right, clamping to the max right rotation
-            newSteeringWheelZ -= steerSpeed * Time.deltaTime;
-        }
         
 
         // Convert newSteeringWheelZ to the -180 to 180 range

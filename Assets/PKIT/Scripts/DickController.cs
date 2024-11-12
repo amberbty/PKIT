@@ -15,9 +15,11 @@ public class DickController : MonoBehaviour
     private float maxRotation = 45f; // Max rotation of the car in degrees
     private float moveSpeed = 0.2f; // Speed of moving the handle
     public float returnSpeed = 1f;
+    public float steeringRotationSpeed = 60f;
 
     public float carSpeed = 5.0f;
     private float stopSmoothness = 5f;
+    private float currentSteeringAngle = 0f;    // The current steering angle of the car (from 0 to max turn angle)
 
     public bool isMoving = false;
     public bool isGrabbed = false;
@@ -46,14 +48,14 @@ public class DickController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Calculate the slider's position ratio on the X-axis between leftLimit and rightLimit
-        float dickPositionRatio = Mathf.InverseLerp(leftLimit.x, rightLimit.x, dickTransform.localPosition.x);
+        // Detect the current position of dick
+        float currentX = transform.localPosition.x;
 
-        // Map this position ratio to the car's rotation angle
-        float carRotationY = Mathf.Lerp(-maxRotation, maxRotation, dickPositionRatio);
+        // Calculate the steering angle based on the rotation difference along the y-axis
+        CalculateSteeringAngle(currentX);
 
-        // Update the car's Y rotation based on the slider's position
-        carTransform.localRotation = Quaternion.Euler(0, initialCarRotationY + carRotationY, 0);
+        // Apply the calculated steering angle to the car
+        ApplySteeringAngleToCar();
 
         if (!isGrabbed)
         {
@@ -70,6 +72,39 @@ public class DickController : MonoBehaviour
         }
 
     }
+
+    private void CalculateSteeringAngle(float currentX)
+    {
+        /*
+        // Calculate the slider's position ratio on the X-axis between leftLimit and rightLimit
+        float dickPositionRatio = Mathf.InverseLerp(leftLimit.x, rightLimit.x, dickTransform.localPosition.x);
+
+        // Map this position ratio to the car's rotation angle, clamped to maxRotation
+        float carRotationY = Mathf.Lerp(-maxRotation, maxRotation, dickPositionRatio);
+
+        // Update the car's Y rotation based on the slider's position
+        carTransform.localRotation = Quaternion.Euler(0, initialCarRotationY + carRotationY, 0);
+        */
+
+        // Calculate the position ratio of the current slider along the X-axis, within the range of -0.16 to 0.16.
+        float dickPositionRatio = Mathf.InverseLerp(-0.16f, 0.16f, currentX);
+        // Map the position ratio to the steering angle range from -45 to 45 degrees.
+        currentSteeringAngle = Mathf.Lerp(-45f, 45f, dickPositionRatio);
+
+        // Map the rotation difference to the steering angle of the car (e.g., clamp it to a max steering angle)
+        currentSteeringAngle = Mathf.Clamp(currentSteeringAngle, -45f, 45f);
+
+    }
+
+    private void ApplySteeringAngleToCar()
+    {
+
+        initialCarRotationY += currentSteeringAngle * Time.deltaTime;
+
+        // Apply the cumulative steering angle to the car's local rotation
+        carTransform.localRotation = Quaternion.Euler(0f, initialCarRotationY, 0f);
+    }
+
     public void ToggleCarMovement()
     {
         isMoving = !isMoving; // Toggle the movement state
