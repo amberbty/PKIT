@@ -7671,6 +7671,7 @@ GameObject:
   - component: {fileID: 827516058}
   - component: {fileID: 827516057}
   - component: {fileID: 827516064}
+  - component: {fileID: 827516065}
   m_Layer: 6
   m_Name: BikeHandles
   m_TagString: Untagged
@@ -7869,6 +7870,67 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactableView: {fileID: 437862124}
+  _whenHover:
+    m_PersistentCalls:
+      m_Calls: []
+  _whenUnhover:
+    m_PersistentCalls:
+      m_Calls: []
+  _whenSelect:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 827516056}
+        m_TargetAssemblyTypeName: HandlesController, Assembly-CSharp
+        m_MethodName: StartGrabbingHandle
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _whenUnselect:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 827516056}
+        m_TargetAssemblyTypeName: HandlesController, Assembly-CSharp
+        m_MethodName: StopGrabbingHandle
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _whenInteractorViewAdded:
+    m_PersistentCalls:
+      m_Calls: []
+  _whenInteractorViewRemoved:
+    m_PersistentCalls:
+      m_Calls: []
+  _whenSelectingInteractorViewAdded:
+    m_PersistentCalls:
+      m_Calls: []
+  _whenSelectingInteractorViewRemoved:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &827516065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 827516055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1464721f2283eb14e94a33e812b47be4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interactableView: {fileID: 1503173172}
   _whenHover:
     m_PersistentCalls:
       m_Calls: []
@@ -21232,5 +21294,5 @@ SceneRoots:
   - {fileID: 839309490}
   - {fileID: 1132653068}
   - {fileID: 1999692121}
-  - {fileID: 1626146355}
   - {fileID: 1888480881}
+  - {fileID: 1626146355}

@@ -3401,7 +3401,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1518633623}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 27017709181320497, guid: d2d6934a666a18d46b8b7a3864dc9f63,
         type: 3}
@@ -3471,7 +3471,7 @@ PrefabInstance:
     - target: {fileID: 7516989854395125638, guid: d2d6934a666a18d46b8b7a3864dc9f63,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.01629585
+      value: 0.2630789
       objectReference: {fileID: 0}
     - target: {fileID: 7516989854395125638, guid: d2d6934a666a18d46b8b7a3864dc9f63,
         type: 3}
@@ -3481,12 +3481,12 @@ PrefabInstance:
     - target: {fileID: 7516989854395125638, guid: d2d6934a666a18d46b8b7a3864dc9f63,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.20647565
+      value: 0.08206397
       objectReference: {fileID: 0}
     - target: {fileID: 7516989854395125638, guid: d2d6934a666a18d46b8b7a3864dc9f63,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.8357467
+      value: 0.9973226
       objectReference: {fileID: 0}
     - target: {fileID: 7516989854395125638, guid: d2d6934a666a18d46b8b7a3864dc9f63,
         type: 3}
@@ -3496,7 +3496,7 @@ PrefabInstance:
     - target: {fileID: 7516989854395125638, guid: d2d6934a666a18d46b8b7a3864dc9f63,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.54911524
+      value: 0.073127866
       objectReference: {fileID: 0}
     - target: {fileID: 7516989854395125638, guid: d2d6934a666a18d46b8b7a3864dc9f63,
         type: 3}
@@ -7458,7 +7458,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1984958546}
     - target: {fileID: 7516989854015812293, guid: d2d6934a666a18d46b8b7a3864dc9f63,
         type: 3}
       propertyPath: _whenUnselect.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
@@ -7487,7 +7487,7 @@ PrefabInstance:
     - target: {fileID: 7516989854015812293, guid: d2d6934a666a18d46b8b7a3864dc9f63,
         type: 3}
       propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: HandlesController, Assembly-CSharp
+      value: WheelController, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7516989854015812293, guid: d2d6934a666a18d46b8b7a3864dc9f63,
         type: 3}
@@ -7749,12 +7749,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!4 &773917962 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7516989854395125638, guid: d2d6934a666a18d46b8b7a3864dc9f63,
-    type: 3}
-  m_PrefabInstance: {fileID: 364875322}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &794384932
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14152,6 +14146,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1961363436296938, guid: c9643380c3b12e3428f59ad8efafcab9, type: 3}
+      propertyPath: m_TagString
+      value: Car
+      objectReference: {fileID: 0}
     - target: {fileID: 1971224605680982, guid: c9643380c3b12e3428f59ad8efafcab9, type: 3}
       propertyPath: m_Layer
       value: 3
@@ -14327,10 +14325,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 769146998}
-    - targetCorrespondingSourceObject: {fileID: 4044351658239648, guid: c9643380c3b12e3428f59ad8efafcab9,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 773917962}
     - targetCorrespondingSourceObject: {fileID: 4791712674169614, guid: c9643380c3b12e3428f59ad8efafcab9,
         type: 3}
       insertIndex: -1
@@ -14411,6 +14405,12 @@ MonoBehaviour:
   steeringLimitAngle: 100
   leftHandTracking: {fileID: 557872646}
   rightHandTracking: {fileID: 1049905445}
+--- !u!54 &1518633625 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 54143248509988628, guid: c9643380c3b12e3428f59ad8efafcab9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1518633621}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1535699760 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: be04acb3356f2cb4b9dfd60d8dcb935e,
@@ -19746,6 +19746,8 @@ GameObject:
   - component: {fileID: 1984958544}
   - component: {fileID: 1984958545}
   - component: {fileID: 1984958546}
+  - component: {fileID: 1984958548}
+  - component: {fileID: 1984958547}
   m_Layer: 6
   m_Name: SteeringWheel
   m_TagString: Untagged
@@ -19938,11 +19940,11 @@ MonoBehaviour:
   _rotationAxis: 2
   _constraints:
     MinAngle:
-      Constrain: 0
-      Value: 0
+      Constrain: 1
+      Value: -359
     MaxAngle:
-      Constrain: 0
-      Value: 0
+      Constrain: 1
+      Value: 359
 --- !u!114 &1984958545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19959,11 +19961,11 @@ MonoBehaviour:
   _rotationAxis: 2
   _constraints:
     MinAngle:
-      Constrain: 0
-      Value: 0
+      Constrain: 1
+      Value: -359
     MaxAngle:
-      Constrain: 0
-      Value: 0
+      Constrain: 1
+      Value: 359
 --- !u!114 &1984958546
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19976,11 +19978,138 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a95eb06683885af458af3dbb570a5b6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wheelTransform: {fileID: 1984958536}
-  car: {fileID: 1518633622}
-  leftWheelLimitZ: 358
-  rightWheelLimitZ: -358
+  steeringRotationSpeed: 60
   returnSpeed: 2
+  isMoving: 0
+  isGrabbed: 0
+  initialWheelLocalRotation: {x: 0.22326712, y: 0, z: 0, w: 0.9747573}
+  carRb: {fileID: 1518633625}
+  carSpeed: 5
+  leftHandTracking: {fileID: 557872646}
+  rightHandTracking: {fileID: 1049905445}
+  wheelTransform: {fileID: 1984958536}
+--- !u!114 &1984958547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1984958535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1464721f2283eb14e94a33e812b47be4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interactableView: {fileID: 221872484}
+  _whenHover:
+    m_PersistentCalls:
+      m_Calls: []
+  _whenUnhover:
+    m_PersistentCalls:
+      m_Calls: []
+  _whenSelect:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1984958546}
+        m_TargetAssemblyTypeName: WheelController, Assembly-CSharp
+        m_MethodName: StartGrabbingHandle
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _whenUnselect:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1984958546}
+        m_TargetAssemblyTypeName: WheelController, Assembly-CSharp
+        m_MethodName: StopGrabbingHandle
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _whenInteractorViewAdded:
+    m_PersistentCalls:
+      m_Calls: []
+  _whenInteractorViewRemoved:
+    m_PersistentCalls:
+      m_Calls: []
+  _whenSelectingInteractorViewAdded:
+    m_PersistentCalls:
+      m_Calls: []
+  _whenSelectingInteractorViewRemoved:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1984958548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1984958535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1464721f2283eb14e94a33e812b47be4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interactableView: {fileID: 1603281897}
+  _whenHover:
+    m_PersistentCalls:
+      m_Calls: []
+  _whenUnhover:
+    m_PersistentCalls:
+      m_Calls: []
+  _whenSelect:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1984958546}
+        m_TargetAssemblyTypeName: WheelController, Assembly-CSharp
+        m_MethodName: StartGrabbingHandle
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _whenUnselect:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1984958546}
+        m_TargetAssemblyTypeName: WheelController, Assembly-CSharp
+        m_MethodName: StopGrabbingHandle
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _whenInteractorViewAdded:
+    m_PersistentCalls:
+      m_Calls: []
+  _whenInteractorViewRemoved:
+    m_PersistentCalls:
+      m_Calls: []
+  _whenSelectingInteractorViewAdded:
+    m_PersistentCalls:
+      m_Calls: []
+  _whenSelectingInteractorViewRemoved:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &1985930795
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21840,4 +21969,5 @@ SceneRoots:
   - {fileID: 845707299}
   - {fileID: 1103446329}
   - {fileID: 1299841949}
+  - {fileID: 364875322}
   - {fileID: 1518633621}
