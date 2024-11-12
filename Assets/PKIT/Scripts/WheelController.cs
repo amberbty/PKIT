@@ -50,6 +50,8 @@ public class WheelController : MonoBehaviour
     {
         // Detect the current rotation of the wheel
         float currentZ = transform.localRotation.eulerAngles.z;
+        // Convert newSteeringWheelZ to the -180 to 180 range
+        if (currentZ > 180f) currentZ -= 360f;
 
         // Calculate the steering angle based on the rotation difference along the y-axis
         CalculateSteeringAngle(currentZ);
@@ -89,7 +91,7 @@ public class WheelController : MonoBehaviour
         }
         
 
-        // Convert newSteeringWheelZ to the -180 to 180 rangea
+        // Convert newSteeringWheelZ to the -180 to 180 range
         //if (newSteeringWheelZ > 180f) newSteeringWheelZ -= 360f;
 
         // Apply the rotation to the steering wheel transform
