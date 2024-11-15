@@ -20323,10 +20323,10 @@ MonoBehaviour:
   _constraints:
     MinAngle:
       Constrain: 1
-      Value: -359
+      Value: -180
     MaxAngle:
       Constrain: 1
-      Value: 359
+      Value: 180
 --- !u!114 &1984958545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20344,10 +20344,10 @@ MonoBehaviour:
   _constraints:
     MinAngle:
       Constrain: 1
-      Value: -359
+      Value: -180
     MaxAngle:
       Constrain: 1
-      Value: 359
+      Value: 180
 --- !u!114 &1984958546
 MonoBehaviour:
   m_ObjectHideFlags: 0

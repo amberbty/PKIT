@@ -117,7 +117,9 @@ public class WheelController : MonoBehaviour
 
     private void ApplySteeringAngleToCar()
     {
-        carInitialYRotation += currentSteeringAngle * Time.deltaTime;
+        float steeringAngle = -currentSteeringAngle;
+
+        carInitialYRotation += steeringAngle * Time.deltaTime;
 
         // Apply the cumulative steering angle to the car's local rotation
         carTransform.localRotation = Quaternion.Euler(0f, carInitialYRotation, 0f);
