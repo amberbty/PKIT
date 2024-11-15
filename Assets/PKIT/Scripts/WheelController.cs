@@ -136,9 +136,6 @@ public class WheelController : MonoBehaviour
         // Preserve Y-axis velocity (gravity)
         Vector3 currentVelocity = carRb.velocity;
         carRb.velocity = new Vector3(forwardForce.x, currentVelocity.y, forwardForce.z);
-
-        // Debugging: Check car velocity
-        Debug.Log("Car Velocity: " + carRb.velocity);
     }
 
     private void SmoothReturnToInitialRotation()

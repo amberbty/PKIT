@@ -14420,6 +14420,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 54143248509988628, guid: c9643380c3b12e3428f59ad8efafcab9,
         type: 3}
+      propertyPath: m_AngularDrag
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 54143248509988628, guid: c9643380c3b12e3428f59ad8efafcab9,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 54143248509988628, guid: c9643380c3b12e3428f59ad8efafcab9,
+        type: 3}
       propertyPath: m_Interpolate
       value: 0
       objectReference: {fileID: 0}
