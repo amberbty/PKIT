@@ -130,9 +130,15 @@ public class WheelController : MonoBehaviour
 
     private void MoveForward()
     {
-        // Move the car forward along its current forward direction
-        carRb.velocity = carTransform.rotation * Vector3.forward * carSpeed;
-        //carRb.velocity = transform.forward * carSpeed;
+        // Move the car forward, preserving gravity
+        Vector3 forwardForce = carTransform.forward * carSpeed;
+
+        // Preserve Y-axis velocity (gravity)
+        Vector3 currentVelocity = carRb.velocity;
+        carRb.velocity = new Vector3(forwardForce.x, currentVelocity.y, forwardForce.z);
+
+        // Debugging: Check car velocity
+        Debug.Log("Car Velocity: " + carRb.velocity);
     }
 
     private void SmoothReturnToInitialRotation()
