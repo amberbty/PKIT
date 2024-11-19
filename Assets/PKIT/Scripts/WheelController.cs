@@ -12,7 +12,7 @@ public class WheelController : MonoBehaviour
     public bool isGrabbed = false;
 
     public Quaternion initialWheelLocalRotation;  // Initial local rotation of the wheel when grabbing starts
-
+    public Quaternion currentWheelLocalRotation;  // Current local rotation of the wheels
 
     private float initialZ;                          // Initial z rotation of the wheel (in degrees)
 
@@ -51,7 +51,6 @@ public class WheelController : MonoBehaviour
         // Detect the current rotation of the wheel
         float currentZ = transform.localRotation.eulerAngles.z;
         // Convert newSteeringWheelZ to the -180 to 180 range
-        if (currentZ > 180f) currentZ -= 360f;
 
         // Calculate the steering angle based on the rotation difference along the y-axis
         CalculateSteeringAngle(currentZ);
@@ -142,9 +141,24 @@ public class WheelController : MonoBehaviour
 
     private void SmoothReturnToInitialRotation()
     {
-        // Smoothly return the handle to its initial rotation when released
-        transform.localRotation = Quaternion.Slerp(transform.localRotation, initialWheelLocalRotation, Time.deltaTime * returnSpeed);
+        // Get the current wheel rotation in the range -180 to 180
+        float currentZ = transform.localRotation.eulerAngles.z;
+        if (currentZ > 180f) currentZ -= 360f;
+
+        // Ensure the initial rotation is also normalized to -180 to 180
+        float initialZ = initialWheelLocalRotation.eulerAngles.z;
+        if (initialZ > 180f) initialZ -= 360f;
+
+        // Calculate the shortest path back to the initial rotation
+        float angleDifference = Mathf.DeltaAngle(currentZ, initialZ);
+
+        // Smoothly interpolate the rotation back
+        float newZ = Mathf.Lerp(currentZ, currentZ + angleDifference, Time.deltaTime * returnSpeed);
+
+        // Apply the new rotation, preserving the other axes
+        transform.localRotation = Quaternion.Euler(transform.localRotation.eulerAngles.x, transform.localRotation.eulerAngles.y, newZ);
     }
+
 
     public void StartGrabbingHandle()
     {
