@@ -1,32 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Meta.XR; 
+using Meta.XR;
 
 public class WheelController : MonoBehaviour
 {
-    public float steeringRotationSpeed = 60f;
-    public float returnSpeed = 2f;
+    public float steeringRotationSpeed = 60f;  // Speed of steering rotation
+    public float returnSpeed = 2f;             // Speed of returning to initial rotation
+    public bool isMoving = false;             // Whether the car is moving
+    public bool isGrabbed = false;            // Whether the wheel is being grabbed
 
-    public bool isMoving = false;
-    public bool isGrabbed = false;
+    private Quaternion initialWheelLocalRotation;  // Fixed initial rotation of the wheel
+    private float initialZ;                        // Fixed initial Z rotation (in degrees)
 
-    public Quaternion initialWheelLocalRotation;  // Initial local rotation of the wheel when grabbing starts
-    public Quaternion currentWheelLocalRotation;  // Current local rotation of the wheels
+    private float carInitialYRotation;            // Initial Y rotation of the car (in degrees)
+    public Rigidbody carRb;                       // Car Rigidbody for movement
+    private float currentSteeringAngle = 0f;      // Current steering angle (-45 to 45 degrees)
+    public float carSpeed = 5.0f;                 // Speed of the car
+    private float stopSmoothness = 5f;            // Smoothness of stopping the car
 
-    private float initialZ;                          // Initial z rotation of the wheel (in degrees)
-
-    private float carInitialYRotation;               // Initial y rotation of the car (in degrees)
-    public Rigidbody carRb;
-    private float currentSteeringAngle = 0f;    // The current steering angle of the car (from 0 to max turn angle)
-    public float carSpeed = 5.0f;
-    private float stopSmoothness = 5f;
-
-    public OVRHand leftHandTracking;
-    public OVRHand rightHandTracking;
-
-    private Transform carTransform; // The car transform (you can use a car steering component or transform to apply the steering)
-
+    private Transform carTransform;              // Reference to the car's transform
 
     // Start is called before the first frame update
     void Start()
@@ -34,25 +27,23 @@ public class WheelController : MonoBehaviour
         // Ensure the car transform is assigned
         if (carTransform == null)
         {
-            carTransform = GameObject.FindGameObjectWithTag("Car").transform;  // Example: find the car by tag
+            carTransform = GameObject.FindGameObjectWithTag("Car").transform;  // Find car by tag
         }
 
-
-        // Store the initial neutral rotation of the wheel (to calculate rotation delta later)
+        // Store the initial neutral rotation of the wheel
         initialWheelLocalRotation = transform.localRotation;
-        initialZ = initialWheelLocalRotation.eulerAngles.z;
+        initialZ = NormalizeAngle(initialWheelLocalRotation.eulerAngles.z);  // Store the fixed initial Z rotation
 
-        carInitialYRotation = carTransform.localRotation.eulerAngles.y;
+        carInitialYRotation = carTransform.localRotation.eulerAngles.y;  // Store the initial Y rotation of the car
     }
 
     // Update is called once per frame
     void Update()
     {
         // Detect the current rotation of the wheel
-        float currentZ = transform.localRotation.eulerAngles.z;
-        // Convert newSteeringWheelZ to the -180 to 180 range
+        float currentZ = NormalizeAngle(transform.localRotation.eulerAngles.z);
 
-        // Calculate the steering angle based on the rotation difference along the y-axis
+        // Calculate the steering angle based on the rotation difference along the Z-axis
         CalculateSteeringAngle(currentZ);
 
         // Apply the calculated steering angle to the car
@@ -69,37 +60,9 @@ public class WheelController : MonoBehaviour
         }
         else
         {
+            // Smoothly stop the car
             carRb.velocity = Vector3.Lerp(carRb.velocity, Vector3.zero, Time.deltaTime * stopSmoothness);
         }
-
-
-        /*
-        // Get input for rotating the steering wheel (left or right)
-        newSteeringWheelZ = wheelTransform.localEulerAngles.z;
-        
-
-        // Convert newSteeringWheelZ to the -180 to 180 range
-        //if (newSteeringWheelZ > 180f) newSteeringWheelZ -= 360f;
-
-        // Apply the rotation to the steering wheel transform
-        wheelTransform.localEulerAngles = new Vector3(
-            wheelTransform.localEulerAngles.x,
-            wheelTransform.localEulerAngles.y,
-            newSteeringWheelZ
-        );
-
-        // Calculate a normalized rotation value (-1 to 1) based on steering wheel rotation
-        float steeringRatio = Mathf.InverseLerp(leftWheelLimitZ, rightWheelLimitZ, newSteeringWheelZ); 
-
-        // Calculate the car's rotation based on the steering wheel's position
-        float carRotationY = steeringRatio * maxRotation;
-
-        // Apply the calculated car rotation, adjusted by the initial Y rotation
-        car.transform.localRotation = Quaternion.Euler(0, initialCarRotationY + carRotationY, 0);
-
-        ReturnToNeutral();
-
-    */
     }
 
     private void CalculateSteeringAngle(float currentZ)
@@ -110,23 +73,17 @@ public class WheelController : MonoBehaviour
         // Optionally, consider smoothing the rotation to avoid abrupt changes
         currentSteeringAngle = Mathf.Lerp(currentSteeringAngle, rotationDifference, Time.deltaTime * steeringRotationSpeed);
 
-        // Map the rotation difference to the steering angle of the car (e.g., clamp it to a max steering angle)
+        // Clamp the rotation difference to the car's max steering angle
         currentSteeringAngle = Mathf.Clamp(currentSteeringAngle, -45f, 45f);
     }
 
     private void ApplySteeringAngleToCar()
     {
-        float steeringAngle = -currentSteeringAngle;
-
+        float steeringAngle = -currentSteeringAngle;  // Negative to match wheel rotation
         carInitialYRotation += steeringAngle * Time.deltaTime;
 
         // Apply the cumulative steering angle to the car's local rotation
         carTransform.localRotation = Quaternion.Euler(0f, carInitialYRotation, 0f);
-    }
-
-    public void ToggleCarMovement()
-    {
-        isMoving = !isMoving; // Toggle the movement state
     }
 
     private void MoveForward()
@@ -141,24 +98,25 @@ public class WheelController : MonoBehaviour
 
     private void SmoothReturnToInitialRotation()
     {
-        // Get the current wheel rotation in the range -180 to 180
-        float currentZ = transform.localRotation.eulerAngles.z;
-        if (currentZ > 180f) currentZ -= 360f;
+        // Get the current Z rotation of the wheel
+        float currentZ = NormalizeAngle(transform.localRotation.eulerAngles.z);
 
-        // Ensure the initial rotation is also normalized to -180 to 180
-        float initialZ = initialWheelLocalRotation.eulerAngles.z;
-        if (initialZ > 180f) initialZ -= 360f;
-
-        // Calculate the shortest path back to the initial rotation
+        // Calculate the shortest path back to the initial Z rotation
         float angleDifference = Mathf.DeltaAngle(currentZ, initialZ);
 
-        // Smoothly interpolate the rotation back
+        // Interpolate smoothly toward the initial rotation
         float newZ = Mathf.Lerp(currentZ, currentZ + angleDifference, Time.deltaTime * returnSpeed);
 
-        // Apply the new rotation, preserving the other axes
+        // Apply the updated rotation back to the wheel, preserving the X and Y rotation
         transform.localRotation = Quaternion.Euler(transform.localRotation.eulerAngles.x, transform.localRotation.eulerAngles.y, newZ);
     }
 
+    private float NormalizeAngle(float angle)
+    {
+        // Normalize angle to -180 to 180 range
+        if (angle > 180f) angle -= 360f;
+        return angle;
+    }
 
     public void StartGrabbingHandle()
     {
@@ -169,21 +127,4 @@ public class WheelController : MonoBehaviour
     {
         isGrabbed = false;
     }
-
-
-
-    /*
-     * private void ReturnToNeutral()
-    {
-        if (!(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)))
-        {
-            // Smoothly interpolate towards neutral rotation
-            newSteeringWheelZ = Mathf.Lerp(newSteeringWheelZ, 0f, Time.deltaTime * returnSpeed);
-
-            transform.localRotation = Quaternion.Euler(0, 0, newSteeringWheelZ);
-        }
-    }
-    */
-
-
 }
