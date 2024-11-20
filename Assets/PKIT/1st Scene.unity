@@ -2699,8 +2699,8 @@ Camera:
   m_GameObject: {fileID: 273477805}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -20323,10 +20323,10 @@ MonoBehaviour:
   _constraints:
     MinAngle:
       Constrain: 1
-      Value: -180
+      Value: -170
     MaxAngle:
       Constrain: 1
-      Value: 180
+      Value: 170
 --- !u!114 &1984958545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20344,10 +20344,10 @@ MonoBehaviour:
   _constraints:
     MinAngle:
       Constrain: 1
-      Value: -180
+      Value: -170
     MaxAngle:
       Constrain: 1
-      Value: 180
+      Value: 170
 --- !u!114 &1984958546
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20364,11 +20364,8 @@ MonoBehaviour:
   returnSpeed: 2
   isMoving: 0
   isGrabbed: 0
-  initialWheelLocalRotation: {x: 0.22326712, y: 0, z: 0, w: 0.9747573}
   carRb: {fileID: 1518633625}
   carSpeed: 5
-  leftHandTracking: {fileID: 557872646}
-  rightHandTracking: {fileID: 1049905445}
 --- !u!114 &1984958547
 MonoBehaviour:
   m_ObjectHideFlags: 0
