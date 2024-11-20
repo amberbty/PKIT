@@ -51,7 +51,7 @@ public class WheelController : MonoBehaviour
 
         if (!isGrabbed)
         {
-            SmoothReturnToInitialRotation();
+            //SmoothReturnToInitialRotation(currentZ);
         }
 
         if (isMoving)
@@ -86,6 +86,11 @@ public class WheelController : MonoBehaviour
         carTransform.localRotation = Quaternion.Euler(0f, carInitialYRotation, 0f);
     }
 
+    public void ToggleCarMovement()
+    {
+        isMoving = !isMoving; // Toggle the movement state
+    }
+
     private void MoveForward()
     {
         // Move the car forward, preserving gravity
@@ -96,10 +101,10 @@ public class WheelController : MonoBehaviour
         carRb.velocity = new Vector3(forwardForce.x, currentVelocity.y, forwardForce.z);
     }
 
-    private void SmoothReturnToInitialRotation()
+    private void SmoothReturnToInitialRotation(float currentZ) //Makes wheel lock bug
     {
         // Get the current Z rotation of the wheel
-        float currentZ = NormalizeAngle(transform.localRotation.eulerAngles.z);
+        //float currentZ = NormalizeAngle(transform.localRotation.eulerAngles.z);
 
         // Calculate the shortest path back to the initial Z rotation
         float angleDifference = Mathf.DeltaAngle(currentZ, initialZ);
