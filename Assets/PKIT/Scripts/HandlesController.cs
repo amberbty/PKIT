@@ -83,6 +83,7 @@ public class HandlesController : MonoBehaviour
 
     private void ApplySteeringAngleToCar()
     {
+        if (!isMoving) return;
         // Apply the calculated steering angle to the car's steering system (assuming it's based on local rotation)
         // This could be done by rotating the car or applying torque depending on your car's steering system
         //carTransform.localRotation = Quaternion.Euler(0f, carInitialYRotation + currentSteeringAngle, 0f);

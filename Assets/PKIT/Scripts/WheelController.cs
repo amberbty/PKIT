@@ -21,6 +21,8 @@ public class WheelController : MonoBehaviour
 
     private Transform carTransform;              // Reference to the car's transform
 
+    public CustomOneGrabRotateTransformer handTransformer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,7 +40,7 @@ public class WheelController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void Update() 
     {
         // Detect the current rotation of the wheel
         float currentZ = NormalizeAngle(transform.localRotation.eulerAngles.z);
@@ -126,10 +128,12 @@ public class WheelController : MonoBehaviour
     public void StartGrabbingHandle()
     {
         isGrabbed = true;
+        handTransformer.isGrabbed = true;
     }
 
     public void StopGrabbingHandle()
     {
         isGrabbed = false;
+        handTransformer.isGrabbed = false;
     }
 }

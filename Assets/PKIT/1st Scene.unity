@@ -2699,7 +2699,7 @@ Camera:
   m_GameObject: {fileID: 273477805}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
+  m_ClearFlags: 2
   m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -7662,67 +7662,67 @@ PrefabInstance:
     - target: {fileID: 7516989854395125638, guid: d2d6934a666a18d46b8b7a3864dc9f63,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.27197
+      value: 0.48190367
       objectReference: {fileID: 0}
     - target: {fileID: 7516989854395125638, guid: d2d6934a666a18d46b8b7a3864dc9f63,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.27197
+      value: 0.48190367
       objectReference: {fileID: 0}
     - target: {fileID: 7516989854395125638, guid: d2d6934a666a18d46b8b7a3864dc9f63,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.27197
+      value: 0.48190367
       objectReference: {fileID: 0}
     - target: {fileID: 7516989854395125638, guid: d2d6934a666a18d46b8b7a3864dc9f63,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.21197024
+      value: -0.07999875
       objectReference: {fileID: 0}
     - target: {fileID: 7516989854395125638, guid: d2d6934a666a18d46b8b7a3864dc9f63,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.0772
+      value: 0.9650003
       objectReference: {fileID: 0}
     - target: {fileID: 7516989854395125638, guid: d2d6934a666a18d46b8b7a3864dc9f63,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.65709555
+      value: 0.5679988
       objectReference: {fileID: 0}
     - target: {fileID: 7516989854395125638, guid: d2d6934a666a18d46b8b7a3864dc9f63,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.5663942
+      value: 0.66183144
       objectReference: {fileID: 0}
     - target: {fileID: 7516989854395125638, guid: d2d6934a666a18d46b8b7a3864dc9f63,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.18920717
+      value: -0.261551
       objectReference: {fileID: 0}
     - target: {fileID: 7516989854395125638, guid: d2d6934a666a18d46b8b7a3864dc9f63,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.7865642
+      value: 0.6402627
       objectReference: {fileID: 0}
     - target: {fileID: 7516989854395125638, guid: d2d6934a666a18d46b8b7a3864dc9f63,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.1572106
+      value: -0.28919518
       objectReference: {fileID: 0}
     - target: {fileID: 7516989854395125638, guid: d2d6934a666a18d46b8b7a3864dc9f63,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 1.89
+      value: 1.382
       objectReference: {fileID: 0}
     - target: {fileID: 7516989854395125638, guid: d2d6934a666a18d46b8b7a3864dc9f63,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 183.007
+      value: 87.517
       objectReference: {fileID: 0}
     - target: {fileID: 7516989854395125638, guid: d2d6934a666a18d46b8b7a3864dc9f63,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -28.424
+      value: -45.884
       objectReference: {fileID: 0}
     - target: {fileID: 7516989854395125640, guid: d2d6934a666a18d46b8b7a3864dc9f63,
         type: 3}
@@ -20125,8 +20125,7 @@ GameObject:
   - component: {fileID: 1984958538}
   - component: {fileID: 1984958537}
   - component: {fileID: 1984958539}
-  - component: {fileID: 1984958544}
-  - component: {fileID: 1984958545}
+  - component: {fileID: 1984958549}
   - component: {fileID: 1984958546}
   - component: {fileID: 1984958548}
   - component: {fileID: 1984958547}
@@ -20200,8 +20199,8 @@ MonoBehaviour:
   _transferOnSecondSelection: 1
   _addNewPointsToFront: 0
   _forwardElement: {fileID: 0}
-  _oneGrabTransformer: {fileID: 1984958544}
-  _twoGrabTransformer: {fileID: 1984958545}
+  _oneGrabTransformer: {fileID: 1984958549}
+  _twoGrabTransformer: {fileID: 0}
   _targetTransform: {fileID: 0}
   _maxGrabPoints: -1
   _rigidbody: {fileID: 0}
@@ -20306,48 +20305,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1984958535}
   m_Mesh: {fileID: 4300014, guid: 14d293759c190f4429a695703756ced6, type: 3}
---- !u!114 &1984958544
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1984958535}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 124f4583f657475469a45ab6fca8f921, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _pivotTransform: {fileID: 0}
-  _rotationAxis: 2
-  _constraints:
-    MinAngle:
-      Constrain: 1
-      Value: -170
-    MaxAngle:
-      Constrain: 1
-      Value: 170
---- !u!114 &1984958545
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1984958535}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b80644816ce922468d6e1dc8c12daff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _pivotTransform: {fileID: 0}
-  _rotationAxis: 2
-  _constraints:
-    MinAngle:
-      Constrain: 1
-      Value: -170
-    MaxAngle:
-      Constrain: 1
-      Value: 170
 --- !u!114 &1984958546
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20366,6 +20323,7 @@ MonoBehaviour:
   isGrabbed: 0
   carRb: {fileID: 1518633625}
   carSpeed: 5
+  handTransformer: {fileID: 1984958549}
 --- !u!114 &1984958547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20488,6 +20446,29 @@ MonoBehaviour:
   _whenSelectingInteractorViewRemoved:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1984958549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1984958535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13788bbb356ffc24aa9a2b8adea46de9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pivotTransform: {fileID: 0}
+  _rotationAxis: 2
+  _constraints:
+    MinAngle:
+      Constrain: 1
+      Value: -60
+    MaxAngle:
+      Constrain: 1
+      Value: 60
+  isGrabbed: 0
+  initialLocalRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1001 &1985930795
 PrefabInstance:
   m_ObjectHideFlags: 0
