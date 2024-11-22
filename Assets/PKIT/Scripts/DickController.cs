@@ -48,15 +48,6 @@ public class DickController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Detect the current position of dick
-        float currentX = transform.localPosition.x;
-
-        // Calculate the steering angle based on the rotation difference along the y-axis
-        CalculateSteeringAngle(currentX);
-
-        // Apply the calculated steering angle to the car
-        ApplySteeringAngleToCar();
-
         if (!isGrabbed)
         {
             SmoothReturnToInitialRotation();
@@ -65,6 +56,14 @@ public class DickController : MonoBehaviour
         if (isMoving)
         {
             MoveForward();
+            // Detect the current position of dick
+            float currentX = transform.localPosition.x;
+
+            // Calculate the steering angle based on the rotation difference along the y-axis
+            CalculateSteeringAngle(currentX);
+
+            // Apply the calculated steering angle to the car
+            ApplySteeringAngleToCar();
         }
         else
         {

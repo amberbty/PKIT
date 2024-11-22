@@ -42,15 +42,6 @@ public class WheelController : MonoBehaviour
     // Update is called once per frame
     void Update() 
     {
-        // Detect the current rotation of the wheel
-        float currentZ = NormalizeAngle(transform.localRotation.eulerAngles.z);
-
-        // Calculate the steering angle based on the rotation difference along the Z-axis
-        CalculateSteeringAngle(currentZ);
-
-        // Apply the calculated steering angle to the car
-        ApplySteeringAngleToCar();
-
         if (!isGrabbed)
         {
             //SmoothReturnToInitialRotation(currentZ);
@@ -59,6 +50,14 @@ public class WheelController : MonoBehaviour
         if (isMoving)
         {
             MoveForward();
+            // Detect the current rotation of the wheel
+            float currentZ = NormalizeAngle(transform.localRotation.eulerAngles.z);
+
+            // Calculate the steering angle based on the rotation difference along the Z-axis
+            CalculateSteeringAngle(currentZ);
+
+            // Apply the calculated steering angle to the car
+            ApplySteeringAngleToCar();
         }
         else
         {

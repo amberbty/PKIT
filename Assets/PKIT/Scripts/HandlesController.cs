@@ -45,15 +45,6 @@ public class HandlesController : MonoBehaviour
 
     void Update()
     {
-        // Detect the current rotation of the bike handles
-        float currentY = transform.localRotation.eulerAngles.y;
-
-        // Calculate the steering angle based on the rotation difference along the y-axis
-        CalculateSteeringAngle(currentY);
-
-        // Apply the calculated steering angle to the car
-        ApplySteeringAngleToCar();
-
         if (!isGrabbed)
         {
             SmoothReturnToInitialRotation();
@@ -62,6 +53,14 @@ public class HandlesController : MonoBehaviour
         if (isMoving)
         {
             MoveForward();
+            // Detect the current rotation of the bike handles
+            float currentY = transform.localRotation.eulerAngles.y;
+
+            // Calculate the steering angle based on the rotation difference along the y-axis
+            CalculateSteeringAngle(currentY);
+
+            // Apply the calculated steering angle to the car
+            ApplySteeringAngleToCar();
         }
         else
         {
