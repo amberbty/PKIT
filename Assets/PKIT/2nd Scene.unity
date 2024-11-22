@@ -8173,10 +8173,9 @@ GameObject:
   - component: {fileID: 827516061}
   - component: {fileID: 827516060}
   - component: {fileID: 827516056}
-  - component: {fileID: 827516059}
-  - component: {fileID: 827516063}
   - component: {fileID: 827516058}
   - component: {fileID: 827516057}
+  - component: {fileID: 827516066}
   - component: {fileID: 827516064}
   - component: {fileID: 827516065}
   m_Layer: 6
@@ -8254,27 +8253,6 @@ CapsuleCollider:
   m_Height: 0.15
   m_Direction: 1
   m_Center: {x: 0, y: 0.025, z: 0.16}
---- !u!114 &827516059
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 827516055}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 124f4583f657475469a45ab6fca8f921, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _pivotTransform: {fileID: 0}
-  _rotationAxis: 1
-  _constraints:
-    MinAngle:
-      Constrain: 1
-      Value: -30
-    MaxAngle:
-      Constrain: 1
-      Value: 30
 --- !u!54 &827516060
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -8317,8 +8295,8 @@ MonoBehaviour:
   _transferOnSecondSelection: 0
   _addNewPointsToFront: 0
   _forwardElement: {fileID: 0}
-  _oneGrabTransformer: {fileID: 827516059}
-  _twoGrabTransformer: {fileID: 827516063}
+  _oneGrabTransformer: {fileID: 827516066}
+  _twoGrabTransformer: {fileID: 0}
   _targetTransform: {fileID: 0}
   _maxGrabPoints: -1
   _rigidbody: {fileID: 0}
@@ -8343,27 +8321,6 @@ Transform:
   - {fileID: 1391896827}
   m_Father: {fileID: 707528265}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 30}
---- !u!114 &827516063
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 827516055}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b80644816ce922468d6e1dc8c12daff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _pivotTransform: {fileID: 0}
-  _rotationAxis: 1
-  _constraints:
-    MinAngle:
-      Constrain: 1
-      Value: -30
-    MaxAngle:
-      Constrain: 1
-      Value: 30
 --- !u!114 &827516064
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8486,6 +8443,28 @@ MonoBehaviour:
   _whenSelectingInteractorViewRemoved:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &827516066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 827516055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13788bbb356ffc24aa9a2b8adea46de9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pivotTransform: {fileID: 0}
+  _rotationAxis: 1
+  _constraints:
+    MinAngle:
+      Constrain: 1
+      Value: -30
+    MaxAngle:
+      Constrain: 1
+      Value: 30
+  isGrabbed: 0
 --- !u!1001 &831330216
 PrefabInstance:
   m_ObjectHideFlags: 0
